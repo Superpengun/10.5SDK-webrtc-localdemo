@@ -1,0 +1,51 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.audio_demo"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:7:5-9:41
+8        android:minSdkVersion="21"
+8-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:8:9-35
+9        android:targetSdkVersion="21" />
+9-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:9:9-38
+10
+11    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+11-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:10:5-70
+11-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:10:22-68
+12    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+12-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:11:5-80
+12-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:11:22-77
+13
+14    <application
+14-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:13:5-27:19
+15        android:allowBackup="true"
+15-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:14:9-35
+16        android:debuggable="true"
+17        android:icon="@drawable/ic_launcher"
+17-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:15:9-45
+18        android:label="@string/app_name"
+18-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:16:9-41
+19        android:theme="@style/AppTheme" >
+19-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:17:9-40
+20        <activity
+20-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:18:9-26:20
+21            android:name="com.example.audio_demo.MainActivity"
+21-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:19:13-41
+22            android:label="@string/app_name" >
+22-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:20:13-45
+23            <intent-filter>
+23-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:21:13-25:29
+24                <action android:name="android.intent.action.MAIN" />
+24-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:22:17-69
+24-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:22:25-66
+25
+26                <category android:name="android.intent.category.LAUNCHER" />
+26-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:24:17-77
+26-->E:\Projectplace\10.5SDK\webrtc_10.5ASR\app\src\main\AndroidManifest.xml:24:27-74
+27            </intent-filter>
+28        </activity>
+29    </application>
+30
+31</manifest>

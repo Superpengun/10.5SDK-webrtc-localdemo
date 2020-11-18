@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.audio_demo.MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/black" >
+
+            <TextView
+                android:id="@+id/tv_logview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/log_area"
+                android:lineSpacingExtra="1dp"
+                android:textColor="@android:color/white" />
+        </ScrollView>
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <ToggleButton
+                android:id="@+id/toggle_speaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="@string/speaker_off"
+                android:textOn="@string/speaker_on" />
+
+            <ToggleButton
+                android:id="@+id/toggle_mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="@string/mute_off"
+                android:textOn="@string/mute_on" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btn_rec"
+                android:layout_column="0"
+                android:text="@string/start_record"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_play"
+                android:layout_column="1"
+                android:text="@string/start_play"
+                android:textSize="16sp" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
