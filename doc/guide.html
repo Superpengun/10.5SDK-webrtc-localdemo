@@ -1,0 +1,911 @@
+<!DOCTYPE html><html><head>
+      <title>&#x7075;&#x4E91; SDK &#x5F00;&#x53D1;&#x6307;&#x5357; Java &#x7248;</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <p></p>
+<div><style>.center { text-align: center; } .h2 { font-size: 1.0em; } img.center { display: table !important; margin: auto !important; } html body table { word-break: normal; } html body code { padding: 0 1px 0 1px; } html body pre>code, html body pre>span.token { font-size:13px !important; line-height: 13px !important; } html body pre { font-size: 13px !important; line-height: 15.5px !important; } .line-numbers-rows { top: .8em !important;} @media screen { .printonly { display: none !important; } } html body blockquote { background-color: #f0f0f0; } @media print { html body pre {page-break-inside: inherit !important;} html body pre span { page-beak-inside: avoid; } }</style>
+</div>  
+<h1 class="mume-header printonly" id="xa0">&#xA0;</h1>
+
+<h1 class="mume-header printonly" id="xa0-1">&#xA0;</h1>
+
+<h1 class="mume-header center" id="%E7%81%B5%E4%BA%91-_sdk_-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97-_java_-%E7%89%88">&#x7075;&#x4E91; <em>SDK</em> &#x5F00;&#x53D1;&#x6307;&#x5357; <em>Java</em> &#x7248;</h1>
+
+<h1 class="mume-header printonly" id="xa0-2">&#xA0;</h1>
+
+<h1 class="mume-header printonly" id="xa0-3">&#xA0;</h1>
+
+<h1 class="mume-header printonly" id="xa0-4">&#xA0;</h1>
+
+<h1 class="mume-header printonly" id="xa0-5">&#xA0;</h1>
+
+<img class="center" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALgAAAAtCAYAAAAdmKE3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAh1AAAIdQB1ttWeQAAKn5JREFUeF7tfQd4lNW29pvJpFdCCKEHhEDovbeIgiCCCraDFKUJ0hGw61EUEZSmFAUbKEVUukfKQZTeS2gJEHpI7z0zc9+1J5NkWjKhnPPf/7nreYYys+v61l579c/JQIANePvtTWjZshqefrqV1a+//HIUFy4k4K23HrPV9YF9969/HcNjj1mv54FNWM6BV/24Dy8O6sheTqrnli2n0LBhMOrUqVzOkR5M8wXzd8PNU4dXRj3yYCYoY1R9Xi7Szx9AetReZN88j5xrZ6DPiAO0zjC4eEDj5QtX32pwCwqBe5VG8KnXBt717u15O9kj8Fq1ZuOZZ8Iwd24/bNx0DP/eGQ03dy+4umqwd+9FxMWl4amnWiE/X3ZlQHZ2Hp5/vj46dQp7IMj7cvEuTJm0Ey8OboQVK17ErVsJ6NBhOYKCPOHiouX8BSgoyIezswbu7i7QaJyQm5uOA/snc91uD2RNJQf97tu/MXLUdrz7Xmu883Z/9ZNW+z7x9zAmTeqq/n/wYCTc3NzRokXNB7ae2LhkHDp0E26uzmZzeHm7Ytprm+Dq4YKPP+yDjIxcs9+zcwrQp3cDPl/X+7q2rFtRiN/xJRIPrUJufCKcOLzGhR9Znnw0inwIfEb6XAi7Nej40fND2tLz41O3OQK7jkSVPmPLvTa7BB4WNhvPPtsQ//znE1i4aAfWrbkAL2+uydkZyclZJJ4cBAdXgF6v56IMRFg+H2QXHoq25V6Eox369VuO/ftvYPqMdpg+rQ8J/SACArxw6fJtNGlcA05OTkhNzcQ33+zHmTPpaNc+EL/+MtrR4e+63axPtmDe50fQ94m6+GbF4KJxAgNn4YsvH8Xzz7XEsGE/4KefLqF370Bs3Djprucqq+PGzSfwdP+1qBAQYKIc/i03Sj6qVHHns3LFnTvZJX6TEZ2QmJhEpjENVatWLGsKh36P2/kdbm/8ENmxV+DsYSRqIWY+IgVC04X/LHU8E8GT9mULCOw+ErVHLoGGXN8RsCLw5cv34/qNVGz47SJq1vRBo0aVMHt2P8W1k5Pz4E1O8PXyY7h8KRUzZ3Yt5OBcsCEPjz/ewpE576lNhw5z8d77vfBYryZqnJiYOLRuvQhDh7ZRSNu08RpctDkYN6E1RgwPv6e5yuqcmpKOp55eiajIVLi66XHp0gw+QG1Rtxo15qBNm0Aeyuvw93fHwoW90LNn87KGvaffs7KzEXsnBZ6eWq5FU0RQvj6u6Nd/JTy8dFizejjS04TIjaDXG5CZlYeQWpV58zlGOPYWeWfrAtxYMwU6nR7O7kaihnDkEoKwInIN16Yhm+a/FaE7QO2K2HM00OXpETJsKYIfK5t5WRH4qFE/49ixGF73Wl6xwpnTcPHiNHKeFZS7M3jFaniNiQigQU5OnqCHbZ34ycbVq2/e08MpT+fEpFSMeWUjObgrDh+JRWaGC0UVWYcBjRt7oHoNLz7oNHzxxUBUrOhfnqEdbtulyxzcuKFHnz7B2Lo1FhERY3Hi+E0cPXYLR4/ewOnTWWQAXOfYNpg08T8r9zZv/jHy8ryEjhRoNAbeupn8l6cSM4sJzoniZiw/Hzm8b1sNk49swdVlLyE3IwFOwq0LOCcJ3MU/GO6BzeDsV5HPxxc6Qw50pKnchIvITYyELitfrUWJLYVcvojobUykzgn/0KcAvo0fQYN3d5S6brsiSsOGH+C551rhvfceRw7la+EMWq0GPj5uGD9+PQ/BHezZM1rJv1OmbsHv267i1KlXlYx5v2HXrgi89NJWXru+yM7Kwo4dL8DLywv16y/Dww9XRWCgFx9QBs6dS0b38EDk53nwGo7D4cPxXNMrvJoD7/eS1Hjbtp0kcTelOHQb4eHf4/btKQgL+5yE5YZ69ZxI/K4UpZpTNu9SNP+uXaexdu0pLFs2SHHYssCgL0D8XyspG+bDPbgZfOu1K6uL+v377/cIWStdxATClIQ6hGOXhPT0LIwd29OhcS0b5Wem4PLHfZF8dp+Sr139/FGhw1BUfuRleNZsWuaYBRmpyLh0GMmHNyL5+GrkpSQpkUYdksKl22LusgMdLyEP77posjjK7gVgl8AbNJhHGTwMH3zwGGbMWENl6RyJSojXQILxIyG74Pr1BCWDBwf7w8PDjVd0BDIzF5a5KWmgy82GvkA0CR1cvH1L7RNx9gaWfrUHWRkGbNt6i0rUSzxonggNXYTP5ndBg7pB2P3XFXy56BSJ50nFEfbvv4zPPjuCkyfHc32OyZXHX63DNWXBt8HDCJ38k0P7kEb79l3CE0+s4aGaRi6pU2KciCqVKn1Kubwapk3thozMAuLIGYsW/Yn16y8jKem94idYykx6ct29/bzVQ6/8+DjUHbnIoXVNm7aeOIhVz8cEbm7OikllFXJN+d7VVUu9JYF4esehcUs2urNtES4vngAPfxf4dhiM4EfHwDu0dbnHMTtsF48gZsMcJJ3cAGfXfDiJfcAkxliMLERuoGzu5lELTZdctTmvXQJv0mQ2zYRBvN59MXZMW1oiXKlgGuBNIp/x+h9ESAzNYC+SgzvTavAX/th+Gf/+9yAqKY6ZxCIXPYO4f6+Hnqew61ZqD87Fsqs9DEVFxqJ1m6/JMUeSiDzQvNkKyprUPSiWuLlp+XFTIpVeL2JUPi0rOlouXnGYwA8OdIKOV6tf045o/ME+hx/U7t1neJMsR1raxzx4XkX9+vVbjOPH40hAIgvrlJ4SVNkDLzzflPrLkw6Nr8/LxomJYdC46mlJGIsaA153qN/Qod9QZMyjcttUWZiEkP/88zKOHEnB5CnNoKdcLN/t2xeNTZsuUMn80KFxTY3OvdUdBj6yagPfhX+Th8vV15HGBRkpuPrNOCTu+xGuXi7QuZDYbXQUItfnAF41wtFo5r+tWlgR+Pff/8nr7Tw3rCc3TiHBZJEzfURx5TvK4kYZPJ8yt0FnoGIlUxqQnp5PeTwLV6684cjaVZuoL4cgYfdK6Li4zhsdI/DIyFtUKJdT1n2FBO6J2rXn48Dhf6Bh/TrYvPk4H+Zmrls4YwFl4tPq/2fOTFTWHkcg9dx+7sYAF08/eIU0dqRLYRs9UpJz4F+Bp02BHt27L8X06Z2UCHP7VhLy8vXw8/NAhQo0Rd0TOGZ/GDFiPZ9dItasGU2RKU/pTZ98sp2Wp0hcOD9cdklu7kLF9w+KoftpQPinw6vKJ/FpaE1z9vBxuM/dNsy5FYnIzwcgJyYCGqLOZIUpOZ7c2LoMoMpjU1FzyFyzqawI/PkXqEyeT6dypEOPHtWJgOdUhx9/PEiCB6/gfGzfcQkxt1MwalQ7tjOoSfPzczBxYg+H96Enq3QiIYiJUaN1zE4dHX0Tzci1jQRODt78a3h6aHngyKF4/bqTg6dnpNOGquUDzSTnciYHH+0wB3d48XKsKVolJGUou7sT5VxnfgpoOdAIMmjTCgv7npyyIaa+1oP6i5H7iOirZ5sCimY+vAnd3O6vzbnk+seO/QW//x7JA5+mmJB8PDxclZ07LY04MsiKnHjg/BSHj4srv4hSHnzda9ubq97ErY2z4OzPVdtQXYTIC5KBRp+cgM9DzYumsyJwcZbIyW7YcA4dOY3w0Ud9VOMRI37k1Z9PG/MwTJ26jtfdDSxf/iS5gzwwAxU9Dyp9Ne51H6X2vxh5E21aLyGBTySBu1MGX0zHSjvUDgnEocPX8f13Z2k16UFHjxeOHb+ChQuO4MSJcdQZHJPBy7P48+euo2GjrxFQkcJxCXByMohjjnNW4s2WiJRU3glFOp2R+6an59I+/ghGjShWPssztyNt//GPFWQ6eqxePYwiEq/JIii+AcQhturHA/jqq/04dvQtR4Z1qI04aTKvHEPG5f3IvnGK1pI4RZRaH3+4+FaGV63m9FB2pceyfPSSemIHLszuCWdeHLaInPo4mUYImi6Otk/gpl8aNFhIAq+DWbP68oTnICTkU3LPati+fTgmT15DESCBpz6FRA+KJwV0oQdTlnvFIQTcbaNNm8/gpaHrcO48vZPkfsGVP0NE1GjUrRlMbhWBJ59cxxvmA67xNH755Rw2bLhE0+YEcqnSldi7WY/g5NChG0qONSdwim+GArz44jY8+1xVPPdse+JPuXuLoKBARytLRR4Cx0Snu1lfx47z0CAsgI6noXfTvdx95CaO372Cn++QEX0CBirr4hJw4mE3EaM66Ea7Am9ZJ2i9AxHY9ilU7jsdHlUecmjOjMhjiHi7NbT+1uKKjK+nqFJr2BJU7mmkRbt2KtG+TTbUr77+SylwFy6kYufOM1Ts3Gl/TkdKytu87t4mF3//gRO3LPbbbw7Cl/bUjz/eRYuOBi1bu8Kr0A3v4+uMsMbGK/9sRAx2746i/FvzgRC3zOHh4U45ux46dqxt9unQIYT/r8tDn49aNYPolq9u1aZr17oPlLjj4pIQFZWORg2DHCKae2mkz8lG9NKRODxIgyvLRyLz+j4qxFkkXtoNqJKILVy55/lxpiQq1iBn/qb1Ea9NPOL2foUzE+vi3MzHoEtPKXMp3qGtUH/aNhQkmTuPpKNIhxrq+NdXjS8ax0pEkRiPU6duYsKEPyiWNMHrr/dGtWrvYtCLLWgPz8d3FAOCgyvRM6fHgAH1qchoSOA5fKA5VFTS8cMPL5V2bsrcgK0GFy7cxPvv/4tiUTyVzApc33VyBQ8MHNAEtWr5koiNypuHpzM9dDlKvhQuKXEyV6LvoO/jjUloIXc19911KqA1aQHefLMVxo3rfndD3GWveMZ7PPXUSkRGpqvbKyDA7y5HKrvb1W+nIGbzPBSK83Cht9QloAYVUHfaqBOQn5BKTp6jCByFMSiWJj+j44baWB7t81lAnVd+QNDDxeEO9lZxbdlY3Nm7RB2iktYVZR+nrljzmfmo0n8irAhcOPSjjy5VHOa334YhNjaNjpyNuBRl1LL377+EpcsO4PChO7SupFHedCexaUnk2WjXzo/iweSyMVPOFmvXHsHQIavxwYfdaZnop3ovXvw3du26jGvXkrnGFCrAerqHaU7SiXNDx9NMxDp5UP5Mw+XL0/7DEX2ix3xEU2A7xSD+k/DFF7vwzjt/UlfqT0K/N5u0vXUn/P0TLs0dRCYCVOrSF4HdhiCgdX86Z6yV5vzUeKSc2IyUY1uQcOQ3KuHkskKUIrqUiEtRc4miSM5crc901Hh5dploOzacIh6fs8GZz7pEa9EBUOCC1t/mWRN4maNaNMihwyaH8qiGRO7tw5DHErEY5R3r/rfX0TxHC4uLY1aa+zl/Vlaa8uo6Oz84S8n9XK8jY+lyMhAxrRU55G1Ue2YWKvce50g3szZJ+3/B9bVTkRt7TYkqSkgu4cihTQ76ZDoTH38DNYZ+bKR6O37K7MtHcfL1NnAROrcwkuelAE1nn753Ai/3Dv+vw/9aDKSd/QuugTXhXjnknveQdvovRH7xFEWZJGg9qJjT+mSiUSVmJAAN3ttBp1vpMTzn3u9Kuf9vYxxLCRA3frWnP35wBJ6fn0cv5/8/3Ouen+gDG8Axx88Dm/4eB45ePgFx2xcpq4jI8kVETjFDn6NF25XmFijL6bKuncapac0Y1GXOxSWO3L/hs/atKPey7mgqdrVqva+8ZP8HDxYDffosZZjApw92kgc4eu0RC1FvymboKFIoE6JpLhUXZsCtn0q3z3vWagrPGs2U6bEkiIyfdWd/WQSuU4kN+ZRj1ewOwIkTl4nwlcy0CWGA1gkmJ/zsQK//V5sYqLTmK2/gxYvXaSkyz4IxrfrixVuMHKQylZpBZVvaOIare9u1np7mzxkeoaey74v27Wcra9b/Rgho35dhr3ugTxWiLt6BxkOH23/MKXNLVXqNFOexBYXzv5np1iLKubPX8cPKo4xlTqD1IUM5cSQIXmKtvby0DCZyYZScGzm0F60toYwTb1E08K5ddMS8tE3FXzs7i8ODMRop2Wjb1psetZFlLvS/3eDw4Sjmme5WnseMDJ3yOGZl6VTwvmQsLVwYTgdOB7NlXr8eR6/vUu7ZW7nvNQzil6g9SXAIqOiC0aNa0gHV5r5uLSc3F927LaQPwp0+CaMCnZtLK5I+GTu2j6BZt9J9nc/RwfLiryP51C7kx0cyEJxhAf4h8KzVhF5Lx6w5cTu/pS39ZWjplxOlUbnf04GwGbvg19x+QJcEZolFxZkW0SLLDPu6aPzMCXz48FWMtb5NQpaYBbEAOKk0MAGVTcE/lLeIPtGMjGxmp4Rg6dKB6vcTJ6LQpcvX9NDVU1GHxWAgB8xmZpALow9fdRRX/5V2MTFJPIx0vwf4KyeXbF32L39nZRWgf//q9OwazZQm2Lz5JD27fymCNrnkjbgCQ2LjMGfOIww7bn8f92NgiMBMegI9+ZzEQ2vCtRPychkYF5fIbKvpZET3GtTl2JILslIQs24mEvevRAazq8ShI7HcKjFIwnJ4+TPyA74N+6D687PhVbv0ILbI2f2Rcn4TNDy3QnkSjBfYaSTqjPqq1AWdGl8f+dk8WGJ+FKzwEnXxqV4sooSHz2daWiK5sz8RJ4m8xmB540NWGUaK4LVaJxWZ5uHhpZJ7TdCiRT18+mlvJCTEmwXU5+To6IQxMAZ6uGMY+y+2qlIlgPvXKju67NW0f1mSxFFHRDCaxwIkbFiSPgRK4krwZTBoGMLQ6D7vyAm/rB9GHOdRJClWwOSWERFp5coB/zHivrJkJI4OqYD0GycQED4SdccsQK1/fISK7QdS6fOjk4d4k1AdejMzIrfh9IwmuDTPGLxnDx6atE6Fv5rOrVid089vKxOHHiFNzeRwg94ZboF1jAQ+afJq3LzJCDfasW2FI9oevSSXNrYYOzYcS5b0JMdO4bVuUNe7n18BY6LH8TDc/0yfMnd9Fw06dqxBwrHemxD41WsscWABEWfuqNQ+S5CsmaAgJgL43v+Q0rCwGnS4jeEBFBEyj7g23hbr1g1Er57N7mLX5euSEX0GUfMGw7/l42i/njfKO7tQ84WZCO4zAdUGvInQST+j5ZcpaPpJBCo0GAAdAxpJb8rSkXh0HU5Ptc/FnRkSEhw+qkimljiW/Iz4MhfoHlxXEXiRFYZI8ajeEZo4lhlYt/YWH8T9udL69m2NDRufQUJiPF36eQyol7gACyNlmcv97zXo1r1moaJovgY5+CnJmsLw0+Lfzp2PLeLgJXtIZk94eP0HthHRc44encTnlklPbiK2/T6UiuaDm6/kRjxr1Ee9ySsR0O7JUvfnGdIIdWesp8PlLD31VVVWvDh3cmLPIurjp+z2rfzENEXgRSJfQZ4SOUoDjW+AWWKzlJzwDiWB/7DyCLmsZGDb7i7hsKJgpaXl8e88FTssYZimeGJbvVo0r4Mzpycww2cify5pvi9tiQa61alRlFCjdbpc3ixxiItPuUtC0TGtLpZJD7eYThdDbidJt6VDp451VLy2ZTkkwY8k6548ea1ogCzmhyYnC+6skSd4Cw+vU+pkEkN/5Uoc13eTIQdxnLN0m6/lYFqtKzn5DJw4OYqBVaZaK45acEQ3SsPZs7fUGiSOyFHQcN7ygGdIQzRbfgtuPqEwMF9WXPUJJzYgI+qYzWE8qtZluho1RkkZEooQnUauqVLA1ZUnp/AiVQkQPCAVWvSC04CBywxRkXolc1tCLpWWevW8afarq/IxhcCjo+P5QJJUQFb//vXx9df/KOq2evUByqlJilDT03MQH19AmVwygnLY7nH06mWUR89EXMMqWmqSkzNYiyObYbf5FGf0bC8huB8yofky3n13GyPidCrWXGRhF5dcPPlUKGaVcvJNC9m08ThjMfbi/IV8Hkax5sgvMoYGlSsXUOlrxsTpcH5nu0SCxMK7u/uaJezKCLL/UaPqYcqUXmqqAwfOY9Cg7VRKzWPC5fDfuXOTuHqTh8IyTMDAOPqD+PGnI7h106ASS8SsKDmcLrzoHnrIlSUwWjGDyn5y8YULt1hj5biKv0lJSUUqmc+dmFwSbA7LVFRiwNsQu6Tw8/pjfBb7cJPVACQYTfAr51Pq3bgyLe6huq7o/VgoA+26cD32QxySU1Jw8MB13h7pSl8JCQlA06bVySztSwJCpMeGkmiJLlE+/UL7ov4bm22uNXLmo0i9stMYs8K2rVbwIZaSo31r82e4ue41aHl4ZGxXv6po9vktOLVtN89QkC+ytzkXMprKEmj/tV0KIpemKuE8rVsXx/E+++wKEmcmicNZlZUQwpRPSkoukdoTjzzSQG1m9eojeO21nSqUVRBrzPx2IsIzMH9BNwx+cTMTKILU1V9k9qFrKpWRgk2a+rFmywjbSIm8gcGD1/KQOFGfcFeJGyW3ZbIAZWXlUm5NZQrXYyxUZG3hGDliLQ4cTFL7KAkidrRs6c+UvhfU10uW7MH8+Wc4lzlHkyAkT49U7D8wzaz/9u0nGaW5UxGVWEC4dTO8i5VKym+IidKX4b/ffdsXzVvUtdrrhg0nMGbM7zxYbiqgzIhrKN2hXTtffPvtIKs+ly7dZOWxdZTVJSnasxA3Jb2gYiGTKExJPzT6P157rSUZgclVbmx74cINvMZw1QgWVtIzc0rAaDXSccx8NGhQkSlwXVh1zPisLSFu13JErxgJZ4a16vP80fZ7a8Vd+kR/NQbx+5cy20usMp5otaT02zf6mwmI37NI1WIpYEx4yJDFqNyLeoqWKVdGccMchDBcqBU8/fTXFEvYwwIkPrwkccvPkknj6SkWFhdlCxaOabRGmLtRhXClnTsTmUu2kTEnTtzNUNMglURcbKoTs5MLTXG+zDxJoo3+qtV6drIcQ/fuP/HhOPHBs8adqt1SbNkwWYK0WrHle5HTVCYn3s2Q1t+sxuoWXt3MQmFqIIrmhQsMdyuEk6fiVNK1JeTlFaD7w/XMvv50zlb6CLYQN76c20/5FUpaqYzrEwuVJw++KKZu6N1nLasEHLQaX/Dn5eXDsXyIQ0nP0ygrj+y3ZJkIU8edO0+jc+cfyEC8VIpaMW6KrWTC4KS//CbGBj2zkv39Sx5cJ2Z3bVROvHNn09RBaNbMl/RRnZ9qjHmXZHM9zp/PINPYyJuOpS5sQFCPESRCxqnLoShIQX5aMT5LNndyJZtXogmZRY2yS2VkXzuuuL1RVndRxC2gCQsLUjKnLRDkRUXlMTVsPuvaMYk105rQzftZWxNsDlz0ZXF7I6cl0bv5mlWHMts0A3K8vDwYknvBbNjTp69hyOAtKrlYistI2lhpYCQmZ1o5ArFqVTQ9rr+bNe/cqS45GIOTLUCI5/btVOZWimcXOHXyqiIsS8jNzUN499Cir7//4W8smH+K66tcyLVLx4qsT8u8t6pVA8jxf8e+/edL71DKr8eZujd48GaOJbgxEnRZkJaWhRdeqMd+XYuaTp26nqltF9nfmcncodSNpjHR+2XeYAOxYMEztOC8qAo/ffllF5VcvWtXIp1i39icqlL4EHJvI+fX59v2DqtyWAISU9L0ibKWjIxrJxSBqyCrJ6YXtddI/UHZkKVSZWoh9U+CgipjKwv7hNZbwKtx5QNzCZvsyCZHia1dCUFFRt4x++mFF1YrYjVmIDl+yOQgVKrkhXnz/ibnuVk0ZkiIEKJepeOVBCPheVKBvq6+vnEjRSUdlwRZu7jrw8ONoltCQhJmTN+jkkTKOniW+xViqlatOontV/5kPFTlhcGDf6HeUUkdaEdAPKJVqxbQp2F04Als3HCMBHxViU9r1vSlftSf39ou8yFWtAYNxAnlybTGeCar77Ga1q9xDyUnS2KEq59tr2tegiS1kGDZLrC9USS0B+kXD7KkG2mYDZyowVZ/fmZRU03Pnk2pILByFWvT2RJVpKU8GE9PX5VIu2dPJhWhT8j59jqCr3K3EYdFcnK2stbYOnTCRWNiioddsHCHKlFGycMKlKuX8q4UuhG50tZ4cjUHBNRkcaMtZv07d65RqACaDytc8OzZeCrHYh4MtiJamS801JvrMSpoU6Zuoj5Bl7GNW0XWI1UJMjPzlavd9n6Je48KJKqt5cblDz8c4L7d7OJGLD2pqbkK32IpE90hg5Wmfv/dPLf2rXd2UhTyJHNrTm+1fcfVF4t2oXr1WRQhc5CWeg3//KAFlfBuVut28a2kRA+tVwDzNm0flIwrZxXBelQJgUtgcKl7v7NlNqiKwClNy8JIy83aKvbz558zyCnyudFk5TSwx82Fg3l6asj1qpEgDlJJKz/SS1upOIc8Wb969+7nKddVUURuCaJQpacXi0o//ciqt4yRsQQ5rFlZ6bwu84jkurQR+1PZvaW8i5YgMuyJ46mIZS6jCbp2rcODYz2/yNxnz8WwTFyCsnpYgtQg6dTJaLLT05i7c+cdlc9qa31SwjgoqABDh9WjPOvK9WXaxL0U0vz553PlJvCNG08Sn9YmPXm+mZmpLK5qwLz53Rh71Bvjxjekcn6bdVP6sk9x8aJffz3Cuo8siKRLwtuFZaEtF7J37wUq33Mw9zMmGJBGOnb0xoXIdzBhvO1ycHoGhYmIUql9sQWu5JiyvtyEKFUUquZz80vdt+SEStk3iW/zrt8OAV3MuX3h03big5jM9Kq2PPFpPNUZivPZI3Qp5Bgc7EvZ6zTrjpjLw+V+CiU6iH29SZPKDOSqzNIU4XwI2TbWwMJDtB8LxMYmkZvnKEuMJcg+OnQI4o0zngFUvWiae4Gmw2d5iG9b3VTyUNwZerD9j+K9dO0SQlwUV2A1jS+WmYsX0silbtpUMIUT93jEaPnYvv08PKhI25J7s7PT8HjfIMb+vIrXZ/TkjfgyPp3TkURuLS5K/5wcF4pRN8qF3itXJHXOlo1eR+tMAGODxjBftSk6dQzFuFfDceP6G1QizTn01m2RHEOLbt3oqLEA8Vg/99xXtM5spnVGSvjp8duGZ2hlGkZdyr7nOvXcTtDggirPvWdzPyks5CnuE8/g+qjQXsQh+3B5IS1GbjR16j0Q+vYuq4Zm7GzUqO5E4mu8DtuR60gScYoidFsgSJcIusWLj5cL6aU3Fpus8YGYrnjbcxvbXLqUqJQ8SwJSHIAmvdmfPm7WvVu3RirLXZIxLEHGuXix2CUcWr8axyansZDDhWCio1Oxd99VWhzMD5ZRd8hD505G+fvSpRSb+5B2Erz1+WfPmC1jwNPtUOchJuyKrFACjHZqN0RGMc3FQRArh8Sq2HJCicg27lV5E4U5ONsowHQ2IoF70rLWunlZhw8/3ExcLmUpuCyKL3q88UYbMrupaN3K2qxpOU/cr7NRecAkxqnYtpnf+o2pauRhoRZio+U4WecPIf7wb3AiH2r47l4GelnflDZN50OGdGLNj4m08z7Bik3CzW1bWcSTdvVqooMoL7uZPHhTxVWtVspWlK5YZWZKYrFt678oif42nA7BwW5WRCsrEyLKzjY/zC1aVrXau8naE32FBX4suKNk8tevL/Zto1ggcq3UJLQFLi6CU+u1+/u5F1lpLIk830aMjD2sigNJpxPRzTaDsqdvmY+n482hUYFd9VjgVGDLlhNo3GQub0NG7nH9jz4aQJFtEkaPth/OWnLMO1sXsqREMEJemmdz6SmHNyH55AHUGvIpX2NS+mE5+2FXhcE6E9bAq15Lm+OV4hsCPY9hrBA1VSkethUgBs/QcXA/wUQ0yi5LG7o1FD+woCBvPkRb8zNxlXbcbdvOWHXfs+eWshtbguyvQgVzjtylc21yQevx5VDZMg+KzN65c7FCJNW+SlZ3Nc0ph0Snc8XBQ+binVhfIiLiObal3Gwseext4VAqDe/ii3BxsZ0AIT6GrVsdkelZf5Ao0TIkUJTqAQO+oaK5AxnpWoqRbjQTPssy0EP4uhTHkrrTIw/j9qa5aLrsis2lZ/N1Jxc+6I/qPVnEdYC5k8yyw+nJTZBHw0itUQtRsYv9CEXN3Lnb8eqraygvRiA+gWFfYngshDx6s959dwMRZe4RNP0uROFKq8L9BCdTtSG60Z1UbIbl7VE8X11yFUkwsI4bMdBZEURFeBcrXB2kOJCtXnPSt+8ijicueFvOGR2vXPNSYt2611YJH46aHqU2TPfw4ncUNWkSZNNhJPjy9/fB8Jc24F9/RKiaMhER18lQFio7vrGOdzEIt9WzZFNT6ieOgzONAT4qqtMSPFjP8ddfz2MTC5YaX2CQxxibq7R7f0OGJTRQDJLcIv6QWbMiqHdk898FLKndioaJcVSMQxxeTsqRzYj/YzlaLjOaWC0h4+J+nBoeiuDeL6H25FWljnt+ehtkRkUgbNo6VOlZXOTHVieNyJjbtsXzZO5E2zYrGE+wlO7epYxpWIJGjZdQe7+pis3bAkFe7doSdH//wPRwlRdSKY+W3JZpZGJEJXh7SxF8b8rU1s4CUYQ9Pf2pOB/mGx8Wo+ejaxh4Jd5Ta+5tfM9QHAmsodlGmjdjPLHG9u1luWPBo4TNdmhfu+indu1C2V+4rzV+ZH9u7v6UhXcyI+hL9Ov3KxU1ecmXNcMQPAcFaWmfLl+mTs+epgNqPr/cID4+gZgy+W8mT3xBxX4Ja6j8xhcGZBFPi80a9+r1kApSE3t/nz6B9EG8hiFDyldTMe3iIWbpVEKd8baTFmK3L8O58Z0QMnEeQl617RwyLersjPZIv3IUTRcyBr2TuQ5jk8DFriyF2Suw9K+80Emux7w8iUnQMB7CS2X32K1Lwbc+9OhR6/5Rt9lMVB5t1MOQh6NXsqURJkzopF48ZUumFCLyo0wrrm+pfGVLNJExJG69X7/GNkQD8HBUUrbqskD0lNDQiiQEc9vhy8MbUsSzHaknh9nf3+iaF/ybEidKziW3U1partpneWHEiPYkTqkka71+EQHF4ygVeaUMnTx7ianJzvZiksbCoqlGjmzP/WfzJnDiIWORJ1WmyjGQUOykpHT40nznXd92VlP0lyMR//sCNF8XS+49ye7Akv54dkwdOPtWRNuf6dGu09yhRZixM1M8hMSPGNPV7I+hZ/HE/Px0cv7ODk10d41sLcD8u969m1Hp8Vf1ye2ByUNq63dxLOn1mXzR1lM2u3foUKcw6br0HeTT/t25iylktbjt22/1JR7zlBPlbtYnCd9ifhs0qPwEHhhYgZGJYUi1YXqUtZied8nMJSF2MS+OHm2MJZFbcsKENsp8vGxZlCps6ghs33GWN9NCq8KjJfsmH2X+bpfn0XjeOeZv2q+jmLB7FS7OehIhU9agwVv0vZRDKi5VybS9Eck0L6D9OZ4bfppXsOMn2hHEmLexxTmtv/v1l2FcUzZzEsvnzhbFLS4ugRaBJ+zW6u7atbbyMpYFUuHrkR4hNptt2DiYLvsEhbfygNwcqamJ+OOPu0/3++CDJ1E/zFuF+joC4nH18fElId+hrG0MZZ08uaeqCSmBWCNHbcacufYdfLdvJ+Dll7/FyBGbVcSihTphtoQKrfvAt2mPUpelo8/Dt2k4Gry5iZaSto5swayNwwRuDKXMIcLz6UlMwOo1T1JmLT2BtNyrYQfz29T6qMo6RK4tCVIi7fix8ZTZk3idy1u7Sj/ict3l5OjV28XWrBlAy4f9l9e2p0xtoFHWzguh1TLkoEg551atbBN4WIPqtDg8TydOGsUh48tOSwNjqLK471NpaRlDgnM87c3W2Fu3jGR8iIuKzbd8AZXlOoyxNAWcmzmoZ4tT9H7+eRQdZ7QKFbhi2dJocud5jBj8kcS+E5/zDcpTpqwnHuewzTImusSrG2vgwBD1Pqd7AWcXxqtUrHbXQ2jEXZyUlEPkM36AgfPyOhJBrnzk3/Kd/B4Tk0yljW9xmFSfDox3WbbAXCGTFQiXSOarPKR9QkI2Exiy1BuRY2NT1ZuQTSDyqsRfyPgSC2FqHxeXyqD91EKiYSYRXymRkVFQGC+Ro7Lz4+PTkZRsrulLB08qwqdOvk3PWhWu9ZpatyqlQAXNGAdujPuQ8WJiMvjADYwpmcTYitLfzCwydZVgLfeRrea39ZHfqtfw5MGzn5rXokUdOtEm8BB4c36+WYz4lfhtWZesT6yd8n/BSUxMAh7tGcDQ3OmcO9Dq4YrpUp6X4M2Ik2I8i7vfFmzcOBofftiG88axX66KzTGFZZTEzZ07iVQ8NfRsD2Qqo/nNsXLlKBbuf5gyexLX6cSbJRGLFpzF53NPMRjrBsuMiE7hRC4fxr2O4csIxBXvWJDXXVNwGR2dsjKzDJejY0mQJLTEDCYVyFVvdELIW51FCapTpyLlXEbYSbHnUuDgoYvQ5TuzhrfEFLup14yI7dboti3mqkeOXCICI2lLrcBAJG8EVvJFpUA3/s0YZ8aUC4gXbubMrQipHUjlxhdBgT783VX929u7dI4mqV9r1h5TL12KvpKpiF1MY9WquZLD1KLFoBktEtaEY29rN27EKYKyERGgusghqljRy+Exk3iIf15/gulmV9RLd7MytVToNYwN8aRLvB4zjlqo2Hp7cPt2IgkoVs0pcTi+vsQz3+zm5SX26LLzX3fsiFCVeSWVT7KuxBUfUssdHTrWYuRiSz6TCmXS2zm+4eIY3weazLo3npTbq1f3ZzxKMJ9PQJl9/5MN/gfPVGsfSLtRtwAAAABJRU5ErkJggg==">
+<h1 class="mume-header printonly" id="xa0-6">&#xA0;</h1>
+
+<h1 class="mume-header center h2 printonly" id="%E7%81%B5%E4%BA%91%E7%A7%91%E6%8A%80-%E6%BA%90%E8%87%AA%E6%B8%85%E5%8D%8E-%E6%9C%8D%E5%8A%A1%E5%85%A8%E7%90%83">&#x7075;&#x4E91;&#x79D1;&#x6280; &#x6E90;&#x81EA;&#x6E05;&#x534E; &#x670D;&#x52A1;&#x5168;&#x7403;</h1>
+
+<h1 class="mume-header printonly" id="xa0-7">&#xA0;</h1>
+
+<h1 class="mume-header center h2" id="%E5%8C%97%E4%BA%AC%E6%8D%B7%E9%80%9A%E5%8D%8E%E5%A3%B0%E7%A7%91%E6%8A%80%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8">&#x5317;&#x4EAC;&#x6377;&#x901A;&#x534E;&#x58F0;&#x79D1;&#x6280;&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8;</h1>
+
+<h1 class="mume-header center h2 printonly" id="beijing-sinovoice-technology-coltd">Beijing SinoVoice Technology Co.,Ltd.</h1>
+
+<div class="pagebreak"> </div>
+<div class="pagebreak"> </div>
+<h1 class="mume-header printonly" id="xa0-8">&#xA0;</h1>
+
+<h1 class="mume-header center" id="%E7%9B%AE%E5%BD%95">&#x76EE;&#x5F55;</h1>
+
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<li><a href="#H-1">1. &#x5E8F;&#x8A00;</a></li>
+<li><a href="#H-2">2. &#x6982;&#x8FF0;</a>
+<ul>
+<li><a href="#H-2-1">2.1 &#x5F00;&#x53D1;&#x5305;&#x6587;&#x4EF6;</a></li>
+<li><a href="#H-2-2">2.2 &#x6A21;&#x5757;&#x5212;&#x5206;</a></li>
+</ul>
+</li>
+<li><a href="#H-3">3. &#x7CFB;&#x7EDF;&#x6A21;&#x5757;</a>
+<ul>
+<li><a href="#H-3-1">3.1 &#x7F51;&#x7EDC;&#x8BBF;&#x95EE;</a></li>
+<li><a href="#H-3-2">3.2 &#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</a></li>
+<li><a href="#H-3-3">3.3 &#x65E5;&#x5FD7;&#x8F93;&#x51FA;</a></li>
+<li><a href="#H-3-4">3.4 &#x5B9A;&#x65F6;&#x5668;</a></li>
+<li><a href="#H-3-5">3.5 &#x6388;&#x6743;&#x529F;&#x80FD;</a></li>
+<li><a href="#H-3-6">3.6 &#x97F3;&#x9891;&#x6D41;</a>
+<ul>
+<li><a href="#H-3-6-1">3.6.1 &#x97F3;&#x9891;&#x6E90;</a></li>
+<li><a href="#H-3-6-2">3.6.2 &#x97F3;&#x9891;&#x69FD;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#H-4">4. &#x80FD;&#x529B;&#x6A21;&#x5757;</a>
+<ul>
+<li><a href="#H-4-1">4.1 <em>ASR</em> &#x6A21;&#x5757;</a></li>
+<li><a href="#H-4-2">4.2 <em>TTS</em> &#x6A21;&#x5757;</a></li>
+</ul>
+</li>
+<li><a href="#H-5">5. &#x4F7F;&#x7528;&#x65B9;&#x6CD5;</a>
+<ul>
+<li><a href="#H-5-1">5.1 &#x5178;&#x578B;&#x6D41;&#x7A0B;</a></li>
+<li><a href="#H-5-2">5.2 &#x7CFB;&#x7EDF;&#x6A21;&#x5757;</a>
+<ul>
+<li><a href="#H-5-2-1">5.2.1 &#x521D;&#x59CB;&#x5316;</a>
+<ul>
+<li><a href="#H-5-2-1-1">5.2.1.1 SSL &#x8BC1;&#x4E66;</a></li>
+</ul>
+</li>
+<li><a href="#H-5-2-2">5.2.2 &#x53CD;&#x521D;&#x59CB;&#x5316;</a></li>
+<li><a href="#H-5-2-3">5.2.3 &#x521B;&#x5EFA;&#x4F1A;&#x8BDD;</a></li>
+<li><a href="#H-5-2-4">5.2.4 &#x5173;&#x95ED;&#x4F1A;&#x8BDD;</a></li>
+<li><a href="#H-5-2-5">5.2.5 &#x5B9A;&#x65F6;&#x5668;</a></li>
+<li><a href="#H-5-2-6">5.2.6 &#x5B89;&#x5353;&#x97F3;&#x9891;&#x6A21;&#x5757;</a></li>
+</ul>
+</li>
+<li><a href="#H-5-3">5.3 <em>ASR</em> &#x6A21;&#x5757;</a></li>
+<li><a href="#H-5-4">5.4 <em>TTS</em> &#x6A21;&#x5757;</a></li>
+</ul>
+</li>
+</ul>
+<div class="pagebreak"> </div>
+<h2 class="mume-header undefined" id="H-1">1. &#x5E8F;&#x8A00;</h2>
+
+<p>&#x672C;&#x6587;&#x6863;&#x4ECB;&#x7ECD;&#x7075;&#x4E91; <em>SDK</em> <em>Java</em> &#x7248;&#x7684;&#x7EC4;&#x6210;&#x3001;&#x529F;&#x80FD;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x4F7F;&#x7528; <em>Java</em> &#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x7075;&#x4E91; <em>SDK</em> &#x5E94;&#x7528;&#xFF0C;
+&#x9884;&#x671F;&#x8BFB;&#x8005;&#x4E3A;&#x7075;&#x4E91; <em>SDK</em> &#x5E94;&#x7528;&#x5F00;&#x53D1;&#x8005;&#x3002;&#x672C;&#x6587;&#x6863;&#x4E2D;&#x4E0D;&#x5305;&#x542B; <em>API</em> &#x53C2;&#x8003;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;<a href="api/index.html">&#x7075;&#x4E91; <em>SDK Java</em> &#x5F00;&#x53D1;&#x624B;&#x518C;</a>&#x67E5;&#x8BE2;&#x5177;&#x4F53;
+<em>API</em>&#x3002;</p>
+<h2 class="mume-header undefined" id="H-2">2. &#x6982;&#x8FF0;</h2>
+
+<p>&#x7075;&#x4E91; <em>SDK Java</em> &#x7248;&#x9762;&#x5411; <em>Windows</em>, <em>Linux</em> &#x548C; <em>Android</em> &#x4E09;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x4F7F;&#x7528; <em>C++</em>
+&#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x5B9E;&#x73B0;&#xFF0C;&#x901A;&#x8FC7; <em>JNI</em> &#x5C01;&#x88C5;&#x4E3A; <em>Java</em> &#x7248;&#x5F00;&#x53D1;&#x5305;&#x3002;&#x7075;&#x4E91; <em>SDK</em> &#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x4EBA;&#x673A;&#x4EA4;&#x4E92;&#x573A;&#x666F;&#xFF0C;
+&#x5E94;&#x7528;&#x4E2D;&#x591A;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x5904;&#x7406;&#x3002;&#x56E0;&#x6B64;&#x7075;&#x4E91; <em>SDK</em> &#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#x63A5;&#x53E3;&#x591A;&#x4E3A;&#x5F02;&#x6B65;&#x63A5;&#x53E3;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x63D0;&#x4F9B;&#x5FC5;&#x8981;&#x7684;&#x540C;&#x6B65;&#x5F62;&#x5F0F;&#x63A5;&#x53E3;&#xFF0C;
+&#x4EE5;&#x6EE1;&#x8DB3;&#x7528;&#x6237;&#x5F00;&#x53D1;&#x7B80;&#x5355;&#x5E94;&#x7528;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-2-1">2.1 &#x5F00;&#x53D1;&#x5305;&#x6587;&#x4EF6;</h3>
+
+<p>&#x7075;&#x4E91; <em>SDK</em> &#x76EE;&#x524D;&#x652F;&#x6301;&#x516D;&#x4E2A;&#x5E73;&#x53F0;&#x67B6;&#x6784;:</p>
+<ul>
+<li><strong><em>Linux</em> &#x7CFB;&#x7EDF;</strong>: &#x652F;&#x6301; <em>x86_64</em>, <em>x86</em> &#x67B6;&#x6784;</li>
+<li><strong><em>Windows</em> &#x7CFB;&#x7EDF;</strong>: &#x652F;&#x6301; <em>x64</em>, <em>x86</em> &#x67B6;&#x6784;</li>
+<li><strong><em>Android</em> &#x7CFB;&#x7EDF;</strong>: &#x652F;&#x6301; <em>arm64-v8a</em>, <em>armeabi-v7a</em> &#x67B6;&#x6784;</li>
+</ul>
+<p>&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x5F00;&#x53D1;&#x5305;&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x542B;&#x8BE5;&#x7CFB;&#x7EDF;&#x4E0B;&#x7684;&#x5404;&#x67B6;&#x6784;&#x5F00;&#x53D1;&#x6240;&#x9700;&#x6587;&#x4EF6;&#x3002;<em>Android</em> &#x5F00;&#x53D1;&#x5305;&#x4EC5;&#x652F;&#x6301;
+<em>Java</em> &#x5F00;&#x53D1;&#x8BED;&#x8A00;&#xFF0C;&#x5176;&#x4ED6;&#x5F00;&#x53D1;&#x5305;&#x5219;&#x5747;&#x540C;&#x65F6;&#x652F;&#x6301; <em>Java</em> &#x548C; <em>C++</em> &#x5F00;&#x53D1;&#x8BED;&#x8A00;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x5F00;&#x53D1;&#x5305;&#x4E2D;&#x7684;&#x6587;&#x6863;&#x3001;&#x5934;&#x6587;&#x4EF6;&#x3001;<em>jar</em> &#x5305;&#x662F;&#x7CFB;&#x7EDF;&#x65E0;&#x5173;&#x7684;&#xFF0C;&#x5728;&#x5404;&#x7CFB;&#x7EDF;&#x4E4B;&#x95F4;&#x4E0D;&#x5B58;&#x5728;&#x5DEE;&#x5F02;&#x3002;</p>
+<blockquote>
+<p><em>Android</em> &#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x5305;&#x4E0D;&#x542B; <em>C++</em> &#x8BED;&#x8A00;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x7528;&#x6237;&#x53EF;&#x4ECE; <em>Linux</em> &#x6216; <em>Windows</em> &#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x5305;&#x4E2D;&#x63D0;&#x53D6;
+<em>C++</em> &#x8BED;&#x8A00;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4F7F;&#x7528; <em>Android</em> &#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x5305;&#x4E2D;&#x7684;&#x5E93;&#x6587;&#x4EF6;&#x5F00;&#x53D1; <em>Android</em> <em>Native</em> &#x5E93;&#x6216;&#x5E94;&#x7528;&#x3002;</p>
+</blockquote>
+<p><em>Android</em> &#x5F00;&#x53D1;&#x5305;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="tree" class="language-tree"><code>android.tgz
+&#x251C;&#x2500;&#x2500; build.properties           # &#x5F00;&#x53D1;&#x5305;&#x5C5E;&#x6027;&#x6587;&#x4EF6;
+&#x251C;&#x2500;&#x2500; doc/                       # &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; api/                   # Java &#x5F00;&#x53D1;&#x624B;&#x518C;&#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; guide.html             # Java &#x5F00;&#x53D1;&#x6307;&#x5357;&#x6587;&#x6863;
+&#x251C;&#x2500;&#x2500; examples/                  # &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x76EE;&#x5F55;
+&#x2514;&#x2500;&#x2500; libs/                      # &#x5E93;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+    &#x251C;&#x2500;&#x2500; arm64-v8a/             # arm64-v8a &#x67B6;&#x6784;&#x5E93;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-asr.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-common.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-sys.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-tts.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libjtx-opus.so
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; libjtx-speex.so
+    &#x251C;&#x2500;&#x2500; armeabi-v7a/           # armeabi-v7a &#x67B6;&#x6784;&#x5E93;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-asr.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-common.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-sys.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-tts.so
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libjtx-opus.so
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; libjtx-speex.so
+    &#x251C;&#x2500;&#x2500; hci-android.jar        # &#x5B89;&#x5353;&#x5E73;&#x53F0;&#x5F55;&#x97F3;&#x673A;&#x548C;&#x64AD;&#x653E;&#x5668; Java &#x5F00;&#x53D1;&#x5305;
+    &#x2514;&#x2500;&#x2500; hci.jar                # &#x7075;&#x4E91; SDK Java &#x5F00;&#x53D1;&#x5305;
+</code></pre><p><em>Linux</em> &#x5F00;&#x53D1;&#x5305;&#x5185;&#x5BB9;&#x5982;&#x4E0B;:</p>
+<pre data-role="codeBlock" data-info="tree" class="language-tree"><code>linux.tgz
+&#x251C;&#x2500;&#x2500; build.properties           # &#x5F00;&#x53D1;&#x5305;&#x5C5E;&#x6027;&#x6587;&#x4EF6;
+&#x251C;&#x2500;&#x2500; doc/                       # &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; cpp/                   # C++ &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; api/               # C++ &#x5F00;&#x53D1;&#x624B;&#x518C;&#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2502;   &#x2514;&#x2500;&#x2500; guide.html         # C++ &#x5F00;&#x53D1;&#x6307;&#x5357;&#x6587;&#x6863;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; java/                  # Java &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; api/               # Java &#x5F00;&#x53D1;&#x624B;&#x518C;&#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0;     &#x2514;&#x2500;&#x2500; guide.html         # Java &#x5F00;&#x53D1;&#x6307;&#x5357;&#x6587;&#x6863;
+&#x251C;&#x2500;&#x2500; examples/                  # &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x76EE;&#x5F55;
+&#x251C;&#x2500;&#x2500; include/                   # C++ &#x5F00;&#x53D1;&#x5934;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; hci/
+&#x251C;&#x2500;&#x2500; jar/                       # Java &#x5F00;&#x53D1;&#x5305;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; hci.jar                # Java &#x5F00;&#x53D1;&#x5305;
+&#x251C;&#x2500;&#x2500; lib/                       # linux.x86 &#x67B6;&#x6784;&#x5E93;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-asr.so -&gt; libhci-asr.so.10*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-asr.so.10 -&gt; libhci-asr.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-asr.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-common.so -&gt; libhci-common.so.2*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-common.so.2 -&gt; libhci-common.so.2.0*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-common.so.2.0*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-sys.so -&gt; libhci-sys.so.10*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-sys.so.10 -&gt; libhci-sys.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-sys.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-tts.so -&gt; libhci-tts.so.10*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-tts.so.10 -&gt; libhci-tts.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libhci-tts.so.10.5*
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; libjtx-opus.so*
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; libjtx-speex.so*
+&#x2514;&#x2500;&#x2500; lib64/                     # linux.x86_64 &#x67B6;&#x6784;&#x5E93;&#x76EE;&#x5F55;
+    &#x251C;&#x2500;&#x2500; libhci-asr.so -&gt; libhci-asr.so.10*
+    &#x251C;&#x2500;&#x2500; libhci-asr.so.10 -&gt; libhci-asr.so.10.5*
+    &#x251C;&#x2500;&#x2500; libhci-asr.so.10.5*
+    &#x251C;&#x2500;&#x2500; libhci-common.so -&gt; libhci-common.so.2*
+    &#x251C;&#x2500;&#x2500; libhci-common.so.2 -&gt; libhci-common.so.2.0*
+    &#x251C;&#x2500;&#x2500; libhci-common.so.2.0*
+    &#x251C;&#x2500;&#x2500; libhci-sys.so -&gt; libhci-sys.so.10*
+    &#x251C;&#x2500;&#x2500; libhci-sys.so.10 -&gt; libhci-sys.so.10.5*
+    &#x251C;&#x2500;&#x2500; libhci-sys.so.10.5*
+    &#x251C;&#x2500;&#x2500; libhci-tts.so -&gt; libhci-tts.so.10*
+    &#x251C;&#x2500;&#x2500; libhci-tts.so.10 -&gt; libhci-tts.so.10.5*
+    &#x251C;&#x2500;&#x2500; libhci-tts.so.10.5*
+    &#x251C;&#x2500;&#x2500; libjtx-opus.so*
+    &#x2514;&#x2500;&#x2500; libjtx-speex.so*
+</code></pre><p><em>Windows</em> &#x5F00;&#x53D1;&#x5305;&#x5185;&#x5BB9;&#x5982;&#x4E0B;:</p>
+<pre data-role="codeBlock" data-info="tree" class="language-tree"><code>windows.tgz
+&#x251C;&#x2500;&#x2500; build.properties           # &#x5F00;&#x53D1;&#x5305;&#x5C5E;&#x6027;&#x6587;&#x4EF6;
+&#x251C;&#x2500;&#x2500; doc/                       # &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; cpp/                   # C++ &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; api/               # C++ &#x5F00;&#x53D1;&#x624B;&#x518C;&#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2502;   &#x2514;&#x2500;&#x2500; guide.html         # C++ &#x5F00;&#x53D1;&#x6307;&#x5357;&#x6587;&#x6863;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; java/                  # Java &#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0;     &#x251C;&#x2500;&#x2500; api/               # Java &#x5F00;&#x53D1;&#x624B;&#x518C;&#x6587;&#x6863;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0;     &#x2514;&#x2500;&#x2500; guide.html         # Java &#x5F00;&#x53D1;&#x6307;&#x5357;&#x6587;&#x6863;
+&#x251C;&#x2500;&#x2500; examples/                  # &#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x76EE;&#x5F55;
+&#x251C;&#x2500;&#x2500; include/                   # C++ &#x5F00;&#x53D1;&#x5934;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; hci/
+&#x251C;&#x2500;&#x2500; jar/                       # Java &#x5F00;&#x53D1;&#x5305;&#x76EE;&#x5F55;
+&#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; hci.jar                # Java &#x5F00;&#x53D1;&#x5305;
+&#x2514;&#x2500;&#x2500; lib/
+    &#x251C;&#x2500;&#x2500; x64/                   # windows.x64 &#x67B6;&#x6784;&#x5E93;&#x76EE;&#x5F55;
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-asr.dll
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-asr.lib
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-common.dll
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-common.lib
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-sys.dll
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-sys.lib
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-tts.dll
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; hci-tts.lib
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; jtx-opus.dll
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; jtx-opus.lib
+    &#x2502;&#xA0;&#xA0; &#x251C;&#x2500;&#x2500; jtx-speex.dll
+    &#x2502;&#xA0;&#xA0; &#x2514;&#x2500;&#x2500; jtx-speex.lib
+    &#x2514;&#x2500;&#x2500; x86/                   # windows.x86 &#x67B6;&#x6784;&#x5E93;&#x76EE;&#x5F55;
+        &#x251C;&#x2500;&#x2500; hci-asr.dll
+        &#x251C;&#x2500;&#x2500; hci-asr.lib
+        &#x251C;&#x2500;&#x2500; hci-common.dll
+        &#x251C;&#x2500;&#x2500; hci-common.lib
+        &#x251C;&#x2500;&#x2500; hci-sys.dll
+        &#x251C;&#x2500;&#x2500; hci-sys.lib
+        &#x251C;&#x2500;&#x2500; hci-tts.dll
+        &#x251C;&#x2500;&#x2500; hci-tts.lib
+        &#x251C;&#x2500;&#x2500; jtx-opus.dll
+        &#x251C;&#x2500;&#x2500; jtx-opus.lib
+        &#x251C;&#x2500;&#x2500; jtx-speex.dll
+        &#x2514;&#x2500;&#x2500; jtx-speex.lib
+</code></pre><h3 class="mume-header undefined" id="H-2-2">2.2 &#x6A21;&#x5757;&#x5212;&#x5206;</h3>
+
+<p>&#x7075;&#x4E91; <em>SDK Java</em> &#x7248;&#x4E3B;&#x8981;&#x7531;<a href="#H-3">&#x7CFB;&#x7EDF;&#x6A21;&#x5757;</a>&#x548C;&#x5177;&#x4F53;&#x7684;<a href="#H-4">&#x80FD;&#x529B;&#x6A21;&#x5757;</a>&#x7EC4;&#x6210;&#xFF0C;&#x5F53;&#x524D;&#x7248;&#x672C;&#x80FD;&#x529B;&#x6A21;&#x5757;&#x4EC5;&#x6709;
+<a href="#H-4-1"><em>ASR</em> &#x6A21;&#x5757;</a> &#x548C; <a href="#H-4-2"><em>TTS</em> &#x6A21;&#x5757;</a>&#x3002;<em>C++</em> &#x901A;&#x7528;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x529F;&#x80FD;&#x5C01;&#x88C5;&#x5728;&#x901A;&#x7528;&#x6A21;&#x5757;&#x4E2D;&#x3002;</p>
+<h2 class="mume-header undefined" id="H-3">3. &#x7CFB;&#x7EDF;&#x6A21;&#x5757;</h2>
+
+<p>&#x7075;&#x4E91; <em>SDK</em> &#x7CFB;&#x7EDF;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x3001;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x3001;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x3001;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x6388;&#x6743;(<em>&#x529F;&#x80FD;&#x6682;&#x7F3A;</em>)&#x3001;&#x97F3;&#x9891;&#x6D41;
+(&#x97F3;&#x9891;&#x6E90;&#x548C;&#x97F3;&#x9891;&#x69FD;)&#x7B49;&#x57FA;&#x7840;&#x529F;&#x80FD;&#x3002;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x4EC5;&#x9762;&#x5411;&#x80FD;&#x529B;&#x6A21;&#x5757;&#xFF0C;&#x4E3A;&#x80FD;&#x529B;&#x6A21;&#x5757;&#x5B9E;&#x73B0;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#x63D0;&#x4F9B;&#x652F;&#x6301;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-3-1">3.1 &#x7F51;&#x7EDC;&#x8BBF;&#x95EE;</h3>
+
+<p><em>Java</em> &#x7248;&#x4E2D;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x529F;&#x80FD;&#x672A;&#x5F00;&#x653E;&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-3-2">3.2 &#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;</h3>
+
+<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F02;&#x6B65;&#x56DE;&#x8C03;&#x4F1A;&#x53D1;&#x751F;&#x5728;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7EBF;&#x7A0B;&#x4E2D;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x5728;&#x56DE;&#x8C03;&#x4E2D;&#x4E0D;&#x5E94;&#x6267;&#x884C;&#x9700;&#x957F;&#x65F6;&#x95F4;&#x7B49;&#x5F85;&#x7684;&#x963B;&#x585E;&#x5F0F;&#x64CD;&#x4F5C;&#xFF0C;
+&#x5426;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x7075;&#x4E91; <em>SDK</em> &#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-3-3">3.3 &#x65E5;&#x5FD7;&#x8F93;&#x51FA;</h3>
+
+<p>&#x521D;&#x59CB;&#x5316; <a href="api/com/sinovoice/sdk/HciSdk.html"><em>HciSdk</em></a> &#x65F6;&#x8BBE;&#x7F6E;&#x4E86;
+<a href="api/com/sinovoice/sdk/HciSdkConfig.html#setDataPath-java.lang.String-"><em>HciSdkConfig.data_path</em></a> &#x5B57;&#x6BB5;&#xFF0C;&#x5373;&#x4F1A;&#x8F93;&#x51FA;&#x65E5;&#x5FD7;&#x81F3;
+<em>hci.log</em> &#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5728;&#x8BE5;&#x5B57;&#x6BB5;&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#xFF0C;&#x5F53;&#x65E5;&#x5FD7;&#x5927;&#x5C0F;&#x8D85;&#x51FA;&#x4E00;&#x5B9A;&#x5927;&#x5C0F;&#x65F6;&#xFF0C;&#x4F1A;&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x6EDA;&#x52A8;&#x64CD;&#x4F5C;&#xFF0C;
+&#x5C06;&#x8F83;&#x8001;&#x7684;&#x65E5;&#x5FD7;&#x79FB;&#x52A8;&#x81F3; <em>hci.log.1</em>, <em>hci.log.2</em>,... &#x7B49;&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x7528;&#x6237;&#x53EF;&#x901A;&#x8FC7;
+<a href="api/com/sinovoice/sdk/HciSdk.html#setLogLevel-int-"><em>HciSdk.setLogLevel</em></a> &#x4FEE;&#x6539;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF0C;&#x4EE5;&#x63A7;&#x5236;&#x54EA;&#x4E9B;&#x7EA7;&#x522B;&#x7684;&#x65E5;&#x5FD7;&#x53EF;&#x4EE5;&#x8F93;&#x51FA;&#x81F3;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x7528;&#x6237;&#x5728;&#x6D4B;&#x8BD5;&#x9636;&#x6BB5;&#x4F7F;&#x7528;&#x65E5;&#x5FD7;&#xFF0C;&#x53EF;&#x5728;&#x5E94;&#x7528;&#x542F;&#x52A8;&#x524D;&#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF; <em>CONSOLE_LOG</em> &#x4E3A;&#x4EFB;&#x610F;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x6837;
+<em>HciSdk</em> &#x4F1A;&#x540C;&#x65F6;&#x5C06;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x63A7;&#x5236;&#x53F0;(&#x5E94;&#x7528;&#x7684;&#x6807;&#x51C6;&#x9519;&#x8BEF;&#x8F93;&#x51FA;)&#x3002;&#x5728; <em>Android</em> &#x5E73;&#x53F0;&#x4E0B;&#xFF0C;&#x4E0D;&#x652F;&#x6301; <em>CONSOLE_LOG</em> &#x529F;&#x80FD;&#xFF0C;
+&#x4F46;&#x8F93;&#x51FA;&#x81F3;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x603B;&#x4F1A;&#x8F93;&#x51FA;&#x81F3; <em>LogCat</em> &#x65E5;&#x5FD7;&#x4E2D;&#x3002;</p>
+<blockquote>
+<p><em>&#x4E0D;&#x5EFA;&#x8BAE;&#x5728;&#x6B63;&#x5F0F;&#x4EA7;&#x54C1;&#x4E2D;&#x542F;&#x7528;</em> <em>CONSOLE_LOG</em></p>
+</blockquote>
+<p>&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x793A;&#x4F8B;&#x5982;&#x4E0B;(_1-11_&#x884C;)&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="log {.line-numbers}" class="language-log line-numbers"><code>2019-07-30 17:29:43.266395 I [1328:0001:1] sys: Close() called with Running state
+2019-07-30 17:29:43.266462 I [1328:0002:1] sys: Running -&gt; Closing
+2019-07-30 17:29:43.266530 D [1328:0002:1] sys: 1 &gt;&gt;&gt; closing sesssions
+2019-07-30 17:29:43.266559 D [1328:0002:1] sys: 1 === sessions closed
+2019-07-30 17:29:43.266580 D [1328:0002:1] sys: 2 &gt;&gt;&gt; closing run-loop
+2019-07-30 17:29:43.266690 D [1328:0002:1] sys: 2 === run-loop closed
+2019-07-30 17:29:43.266711 D [1328:0002:1] sys: 3 &gt;&gt;&gt; final cleanup
+2019-07-30 17:29:43.266913 I [1328:0002:1] sys: Closing -&gt; Closed
+2019-07-30 17:29:43.266978 W [1328:0002:1] sys: extra sdk reference, count=1
+2019-07-30 17:29:43.267011 D [1328:0002:1] sys: release
+2019-07-30 17:29:43.267031 I [1328:0002:1] sys: ~~~~~~~~~~~~~~~~ log  ... &#x8D85;&#x957F;&#xFF0C;&#x7701;&#x7565; ...
+&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x252C;  &#x2500;&#x252C;&#x2500;&#x2500; &#x2500;&#x252C;&#x2500;&#x2500; &#x252C;  &#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+         &#x2502;                 &#x2502;   &#x2502;    &#x2502;   &#x2502;   &#x2514;&#x2500;&#x2500; &#x65E5;&#x5FD7;&#x6D88;&#x606F;&#x5185;&#x5BB9;
+         &#x2502;                 &#x2502;   &#x2502;    &#x2502;   &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; SDK &#x5BF9;&#x8C61; ID&#xFF0C;&#x540C;&#x4E00;&#x8FDB;&#x7A0B;&#x4E2D;&#x5141;&#x8BB8;&#x521B;&#x5EFA;&#x591A;&#x4E2A; SDK &#x5BF9;&#x8C61;
+         &#x2502;                 &#x2502;   &#x2502;    &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x7EBF;&#x7A0B; ID
+         &#x2502;                 &#x2502;   &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x8FDB;&#x7A0B; ID
+         &#x2502;                 &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x65E5;&#x5FD7;&#x7EA7;&#x522B;
+         &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x65E5;&#x5FD7;&#x65F6;&#x95F4;&#x6233;
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x521D;&#x59CB;&#x5316; <em>HciSdk</em> &#x65F6;&#xFF0C;&#x4F1A;&#x5728;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;&#x8F93;&#x51FA;&#x6A21;&#x5757;&#x7248;&#x672C;&#x4FE1;&#x606F;&#xFF0C;&#x7F16;&#x8BD1;&#x65F6;&#x95F4;&#x53CA;&#x6A21;&#x5757;&#x8DEF;&#x5F84;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre data-role="codeBlock" data-info="log {.line-numbers}" class="language-log line-numbers"><code>xxxxx sys: ================ log started ================
+xxxxx cmn: 1.0.0 (1.0)
+xxxxx sys: 10.0.0 (10.0)
+xxxxx sys: loaded modules:
+xxxxx sys: module-001: 1.0,2019-08-21 07:44:23 UTC,Z:\out\hci-common.dll
+xxxxx sys: module-002: 10.0,2019-08-26 06:13:02 UTC,Z:\out\hci-asr.dll
+xxxxx sys: module-003: 10.0,2019-08-26 06:13:02 UTC,Z:\out\hci-sys.dll
+&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;      &#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;  &#x2500;&#x252C;&#x2500;&#x2500; &#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;
+  &#x2502;            &#x2502;        &#x2502;           &#x2502;                 &#x2514;&#x2500;&#x2500; &#x6A21;&#x5757;&#x8DEF;&#x5F84;
+  &#x2502;            &#x2502;        &#x2502;           &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x6A21;&#x5757;&#x7F16;&#x8BD1;&#x65F6;&#x95F4;
+  &#x2502;            &#x2502;        &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x6E90;&#x7801;&#x7248;&#x672C;&#x4FE1;&#x606F;
+  &#x2502;            &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x6A21;&#x5757;&#x5E8F;&#x53F7;(&#x52A0;&#x8F7D;&#x987A;&#x5E8F;)
+  &#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500; &#x65F6;&#x95F4;&#x6233;&#xFF0C;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF0C;&#x8FDB;&#x7A0B;ID&#xFF0C;&#x7EBF;&#x7A0B; ID&#xFF0C;SDK ID
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x7B2C; 2 &#x884C;&#x4E3A;&#x901A;&#x7528;&#x6A21;&#x5757;&#x7248;&#x672C;&#x4FE1;&#x606F;&#xFF0C;&#x7B2C; 3 &#x884C;&#x4E3A;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;&#x7248;&#x672C;&#x4FE1;&#x606F;</p>
+<ul>
+<li>&#x5706;&#x62EC;&#x53F7;&#x524D;&#x4E3A;&#x6A21;&#x5757;&#x7248;&#x672C;&#x3002;&#x6A21;&#x5757;&#x7248;&#x672C;&#x53EF;&#x4EE5;&#x6709;&#x540E;&#x7F00;&#xFF0C;&#x4F8B;&#x5982; <em>1.0.0-testing</em>
+<ul>
+<li>&#x6B63;&#x5F0F;&#x53D1;&#x5E03;&#x7684;&#x975E;&#x5B9A;&#x5236;&#x7248;&#x672C;&#x65E0;&#x540E;&#x7F00;</li>
+<li>&#x540E;&#x7F00; <em>testing</em> &#x4EE3;&#x8868;&#x5185;&#x90E8;&#x4EA4;&#x6D4B;&#x7248;&#x672C;</li>
+<li>&#x540E;&#x7F00; <em>unstable</em> &#x4EE3;&#x8868;&#x672A;&#x4EA4;&#x6D4B;&#x7684;&#x5F00;&#x53D1;&#x7248;&#x672C;</li>
+<li>&#x540E;&#x7F00;&#x4E3A;&#x5176;&#x4ED6;&#x5185;&#x5BB9;&#x65F6;&#x4E00;&#x822C;&#x4EE3;&#x8868;&#x5B9A;&#x5236;&#x7248;&#x672C;&#xFF0C;&#x6839;&#x636E;&#x540E;&#x7F00;&#x4E2D;&#x662F;&#x5426;&#x5305;&#x542B; <em>testing</em> &#x6216; <em>unstable</em>
+&#x8FA8;&#x522B;&#x5C5E;&#x4E8E;&#x6B63;&#x5F0F;&#x7248;&#x672C;&#x3001;&#x4EA4;&#x6D4B;&#x7248;&#x672C;&#x6216;&#x5F00;&#x53D1;&#x7248;&#x672C;&#x54EA;&#x4E00;&#x7C7B;</li>
+</ul>
+</li>
+<li>&#x5706;&#x62EC;&#x53F7;&#x5185;&#x4E3A;&#x6E90;&#x7801;&#x7248;&#x672C;</li>
+</ul>
+<h3 class="mume-header undefined" id="H-3-4">3.4 &#x5B9A;&#x65F6;&#x5668;</h3>
+
+<p>&#x4F7F;&#x7528; <a href="api/com/sinovoice/sdk/HciSdk.html#newTimer-com.sinovoice.sdk.ITimerCB-"><em>HciSdk.newTimer</em></a>
+&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x540E;&#x89E6;&#x53D1;&#xFF0C;&#x6216;&#x8005;&#x4EE5;&#x6307;&#x5B9A;&#x7684;&#x95F4;&#x9694;&#x8FDB;&#x884C;&#x5468;&#x671F;&#x6027;&#x89E6;&#x53D1;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-3-5">3.5 &#x6388;&#x6743;&#x529F;&#x80FD;</h3>
+
+<blockquote>
+<p><em>&#x6388;&#x6743;&#x529F;&#x80FD;&#x4EC5;&#x9488;&#x5BF9;&#x672C;&#x5730;&#x80FD;&#x529B;&#xFF0C;&#x5F53;&#x524D;&#x7248;&#x672C;&#x4E2D;&#x6682;&#x65E0;&#x672C;&#x5730;&#x80FD;&#x529B;&#xFF1B;&#x4E91;&#x7AEF;&#x80FD;&#x529B;&#x7531;&#x4E91;&#x7AEF;&#x63A7;&#x5236;&#x6388;&#x6743;</em>&#x3002;</p>
+</blockquote>
+<h3 class="mume-header undefined" id="H-3-6">3.6 &#x97F3;&#x9891;&#x6D41;</h3>
+
+<p>&#x5728;&#x548C;&#x97F3;&#x9891;&#x6570;&#x636E;&#x6253;&#x4EA4;&#x9053;&#x7684;&#x80FD;&#x529B;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6709;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x97F3;&#x9891;&#x6D41;&#xFF0C;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;:</p>
+<ul>
+<li><a href="api/com/sinovoice/sdk/audio/IAudioSource.html">&#x97F3;&#x9891;&#x6E90;&#x63A5;&#x53E3;</a>&#x3002;
+&#x4EE5;&#x6570;&#x636E;&#x6D41;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6309;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#x8BFB;&#x53D6;&#x97F3;&#x9891;&#x6570;&#x636E;&#x3002;</li>
+<li><a href="api/com/sinovoice/sdk/audio/IAudioSource.html">&#x97F3;&#x9891;&#x69FD;&#x63A5;&#x53E3;</a>&#x3002;
+&#x4EE5;&#x6570;&#x636E;&#x6D41;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6309;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x683C;&#x5F0F;&#x5199;&#x5165;&#x97F3;&#x9891;&#x6570;&#x636E;&#x3002;</li>
+</ul>
+<p>&#x4E00;&#x4E9B;&#x97F3;&#x9891;&#x76F8;&#x5173;&#x7684;&#x80FD;&#x529B;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x4F1A;&#x6D89;&#x53CA;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B; (<em>VAD</em>)&#xFF0C;&#x68C0;&#x67E5;&#x97F3;&#x9891;&#x662F;&#x8BED;&#x97F3;&#x8FD8;&#x662F;&#x9759;&#x97F3;&#xFF0C;&#x5224;&#x65AD;&#x51FA;&#x8BED;&#x97F3;&#x6BB5;&#x7684;&#x8D77;&#x59CB;&#x53CA;&#x7ED3;&#x675F;&#x7AEF;&#x70B9;&#x3002;
+&#x505A;&#x5B8C;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B;&#x540E;&#xFF0C;&#x4E00;&#x4E2A;&#x97F3;&#x9891;&#x6D41;&#x5C06;&#x88AB;&#x5206;&#x5272;&#x6210;&#x8BED;&#x97F3;&#x548C;&#x9759;&#x97F3;&#x4EA4;&#x66FF;&#x51FA;&#x73B0;&#x7684;&#x591A;&#x6BB5;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x7528;&#x6237;&#x5728;&#x97F3;&#x9891;&#x6E90;&#x8BFB;&#x53D6;&#x542F;&#x52A8;&#x540E;&#x53EF;&#x901A;&#x8FC7;&#x751F;&#x6548;&#x7684;&#x97F3;&#x9891;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E2D;&#x7684; <em><code>have_vad</code></em> &#x5B57;&#x6BB5;&#xFF0C;&#x5224;&#x65AD;&#x8BFB;&#x53D6;&#x7684;&#x97F3;&#x9891;&#x6570;&#x636E;&#x662F;&#x5426;&#x5305;&#x542B;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B;&#x4FE1;&#x606F;&#x3002;
+&#x5982;&#x679C; <em><code>have_vad</code></em> &#x4E3A; <code>true</code> &#x7684;&#x8BDD;&#xFF0C;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x5728;&#x5206;&#x6BB5;&#x4EA4;&#x754C;&#x5904;&#x4F1A;&#x8FD4;&#x56DE; <em>HciAudioError.VOICE_START</em> &#x6216;
+<em>HciAudioError.VOICE_END</em> &#x4E8B;&#x4EF6;; &#x5426;&#x5219;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x4E0D;&#x4F1A;&#x8FD4;&#x56DE;&#x8FD9;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x7528;&#x6237;&#x5728;&#x97F3;&#x9891;&#x69FD;&#x63A5;&#x53E3;&#x542F;&#x52A8;&#x5199;&#x5165;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x5B9A; <em><code>have_vad</code></em> &#x4E3A; <em><code>true</code></em>&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x5199;&#x5165;&#x7684;&#x97F3;&#x9891;&#x6D41;&#x5DF2;&#x505A;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B;&#x5904;&#x7406;&#x3002;
+&#x4E4B;&#x540E;&#x7528;&#x6237;&#x5E94;&#x4F7F;&#x7528; <em>IAudioSink.voiceStart()</em> &#x548C; <em>IAudioSink.voiceEnd()</em> &#x5199;&#x5165;&#x7AEF;&#x70B9;&#x4FE1;&#x606F;&#xFF0C;
+&#x4ECE;&#x800C;&#x5C06;&#x5199;&#x5165;&#x7684;&#x97F3;&#x9891;&#x6D41;&#x5206;&#x5272;&#x4E3A;&#x591A;&#x4E2A;&#x8BED;&#x97F3;/&#x9759;&#x97F3;&#x6BB5;&#x3002;</p>
+<p><em>&#x5F53;&#x524D; SDK &#x529F;&#x80FD;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x63A5;&#x89E6;&#x5230;&#x7684;&#x63A5;&#x53E3;&#x4E2D;&#x8FD8;&#x672A;&#x7528;&#x5230;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x6237;&#x4E0D;&#x9700;&#x8981;&#x8BBE;&#x7F6E; <code>have_vad</code> &#x6216;&#x5904;&#x7406; <code>have_vad</code> &#x5B57;&#x6BB5;</em></p>
+<h4 class="mume-header undefined" id="H-3-6-1">3.6.1 &#x97F3;&#x9891;&#x6E90;</h4>
+
+<p>&#x7528;&#x6237;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x97F3;&#x9891;&#x6E90;&#x5BF9;&#x8C61;&#xFF1A;</p>
+<ul>
+<li>&#x57FA;&#x4E8E;&#x5185;&#x5B58;&#x6570;&#x636E;&#x521B;&#x5EFA;&#x97F3;&#x9891;&#x6E90;&#x3002;&#x8BF7;&#x53C2;&#x8003; <a href="api/com/sinovoice/sdk/audio/DataAudioSource.html"><em>DataAudioSource</em></a> &#x7C7B;</li>
+<li>&#x57FA;&#x4E8E;&#x97F3;&#x9891;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x97F3;&#x9891;&#x6E90;&#x3002;&#x8BF7;&#x53C2;&#x8003; <a href="api/com/sinovoice/sdk/audio/DataAudioSource.html"><em>FileAudioSource</em></a> &#x7C7B;</li>
+<li>&#x57FA;&#x4E8E;&#x97F3;&#x9891;&#x7F13;&#x51B2;&#x533A;&#x521B;&#x5EFA;&#x97F3;&#x9891;&#x6E90;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x6237;&#x4E3B;&#x52A8;&#x5411;&#x97F3;&#x9891;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x97F3;&#x9891;&#x69FD;&#x63A5;&#x53E3;&#x5199;&#x5165;&#x97F3;&#x9891;&#x6570;&#x636E;&#x3002;&#x8BF7;&#x53C2;&#x8003;
+<a href="api/com/sinovoice/sdk/audio/HciAudioBuffer.html"><em>HciAudioBuffer</em></a> &#x7C7B;</li>
+</ul>
+<p>&#x524D;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x9002;&#x7528;&#x4E8E;&#x7B80;&#x5355;&#x7684;&#x97F3;&#x9891;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x4F7F;&#x7528;&#x97F3;&#x9891;&#x7F13;&#x51B2;&#x9002;&#x7528;&#x5176;&#x4ED6;&#x66F4;&#x4E3A;&#x590D;&#x6742;&#x7684;&#x97F3;&#x9891;&#x6E90;&#x573A;&#x666F;&#x3002;</p>
+<h4 class="mume-header undefined" id="H-3-6-2">3.6.2 &#x97F3;&#x9891;&#x69FD;</h4>
+
+<p>&#x5728; SDK &#x5F53;&#x524D;&#x7248;&#x672C;&#x652F;&#x6301;&#x7684;&#x573A;&#x666F;&#x4E2D;&#x4EC5;&#x4F1A;&#x5728;&#x4F7F;&#x7528;&#x97F3;&#x9891;&#x7F13;&#x51B2;&#x533A;&#x65F6;&#x4F1A;&#x7528;&#x5230;&#x97F3;&#x9891;&#x69FD;&#x3002;</p>
+<h2 class="mume-header undefined" id="H-4">4. &#x80FD;&#x529B;&#x6A21;&#x5757;</h2>
+
+<p>&#x6BCF;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x80FD;&#x529B;&#x5747;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x6839;&#x636E;&#x80FD;&#x529B;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x6BCF;&#x4E2A;&#x80FD;&#x529B;&#x6A21;&#x5757;&#x4E2D;&#x81F3;&#x5C11;&#x4F1A;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x7C7B;&#x3002;
+&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x7C7B;&#x5747;&#x7EE7;&#x627F;&#x81EA; <a href="api/com/sinovoice/sdk/HciSession.html"><em>HciSession</em></a> &#x7C7B;&#x3002;
+&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x7C7B;&#x4E00;&#x822C;&#x4F1A;&#x540C;&#x65F6;&#x652F;&#x6301;&#x4E91;&#x7AEF;&#x80FD;&#x529B;&#x548C;&#x672C;&#x5730;&#x80FD;&#x529B;&#x3002;&#x521B;&#x5EFA;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x5E94;&#x7ED9;&#x51FA;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x914D;&#x7F6E;&#xFF0C;
+&#x4EE5;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x4E91;&#x7AEF;&#x80FD;&#x529B;&#x8FD8;&#x662F;&#x672C;&#x5730;&#x80FD;&#x529B;&#x3002;</p>
+<blockquote>
+<p><em>&#x76EE;&#x524D;&#x53EA;&#x6709;&#x4E91;&#x7AEF;&#x80FD;&#x529B;</em></p>
+</blockquote>
+<h3 class="mume-header undefined" id="H-4-1">4.1 <em>ASR</em> &#x6A21;&#x5757;</h3>
+
+<p>&#x652F;&#x6301;&#x56DB;&#x79CD;&#x573A;&#x666F;&#x7684;&#x8BC6;&#x522B;&#x6A21;&#x5F0F;&#x3002;</p>
+<ul>
+<li>
+<p><strong>&#x4E00;&#x53E5;&#x8BDD;&#x8BC6;&#x522B;</strong></p>
+<p>&#x4E00;&#x6B21;&#x6027;&#x4F20;&#x5165;&#x5168;&#x90E8;&#x97F3;&#x9891;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BC6;&#x522B;&#xFF0C;&#x9002;&#x7528;&#x4E8E;&#x5BF9;&#x8BDD;&#x804A;&#x5929;&#xFF0C;&#x63A7;&#x5236;&#x547D;&#x4EE4;&#xFF0C;&#x8F93;&#x5165;&#x6CD5;&#x7B49;&#x8BC6;&#x522B;&#x8F83;&#x77ED;&#x8BED;&#x97F3;&#x7684;&#x573A;&#x666F;&#x3002;</p>
+</li>
+<li>
+<p><strong>&#x6D41;&#x5F0F;&#x4E00;&#x53E5;&#x8BDD;</strong></p>
+<p>&#x672C;&#x6A21;&#x5F0F;&#x4E0B;&#x4F1A;&#x8BDD;&#x5C06;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x7684;&#x97F3;&#x9891;&#x6570;&#x636E;&#x5206;&#x5272;&#x6210;&#x591A;&#x4E2A;&#x5206;&#x7247;&#x53D1;&#x9001;&#x81F3;&#x4E91;&#x7AEF;&#x6216;&#x9001;&#x5165;&#x672C;&#x5730;&#x8BC6;&#x522B;&#x5F15;&#x64CE;&#x8FDB;&#x884C;&#x8BC6;&#x522B;&#xFF0C;
+&#x5F15;&#x64CE;&#x5728;&#x4F1A;&#x8BDD;&#x542F;&#x52A8;&#x540E;&#x5373;&#x5F00;&#x59CB;&#x5DE5;&#x4F5C;&#xFF0C;&#x968F;&#x65F6;&#x5BF9;&#x65B0;&#x9001;&#x5165;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BC6;&#x522B;&#xFF0C;&#x65E0;&#x987B;&#x7B49;&#x5F85;&#x6240;&#x6709;&#x97F3;&#x9891;&#x6570;&#x636E;&#x5C31;&#x7EEA;&#x518D;&#x5F00;&#x59CB;&#xFF0C;
+&#x56E0;&#x6B64;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x77ED;&#xFF0C;&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x597D;&#x3002;&#x672C;&#x6A21;&#x5F0F;&#x4E0B;&#x4E0D;&#x505A;&#x7AEF;&#x70B9;&#x68C0;&#x67E5;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x8FDB;&#x884C;&#x65AD;&#x53E5;&#xFF0C;&#x65E0;&#x6CD5;&#x7ED9;&#x51FA;&#x8BED;&#x97F3;&#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x4E8B;&#x4EF6;&#x3002;
+&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x8F83;&#x77ED;&#x7684;&#x4E00;&#x53E5;&#x8BDD;&#x8BC6;&#x522B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x624B;&#x673A;&#x8F93;&#x5165;&#x6CD5;&#x3001;&#x667A;&#x80FD;&#x5BB6;&#x5C45;&#x8BED;&#x97F3;&#x4EA4;&#x4E92;&#x573A;&#x666F;&#x3002;</p>
+</li>
+<li>
+<p><strong>&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#x8FDE;&#x7EED;&#x6A21;&#x5F0F;</strong></p>
+<p>&#x672C;&#x6A21;&#x5F0F;&#x4E0B;&#x540C;&#x6837;&#x5C06;&#x97F3;&#x9891;&#x6570;&#x636E;&#x5206;&#x5272;&#x6210;&#x591A;&#x4E2A;&#x5206;&#x7247;&#x53D1;&#x9001;&#x81F3;&#x4E91;&#x7AEF;&#x6216;&#x9001;&#x5165;&#x672C;&#x5730;&#x5F15;&#x64CE;&#x8FDB;&#x884C;&#x8BC6;&#x522B;&#xFF0C;&#x5728;&#x8BC6;&#x522B;&#x4E4B;&#x524D;&#x5148;&#x8FDB;&#x884C;&#x7AEF;&#x70B9;&#x68C0;&#x6D4B;&#xFF0C;
+&#x5982;&#x679C;&#x662F;&#x8BED;&#x97F3;&#x624D;&#x8FDB;&#x884C;&#x5B9E;&#x9645;&#x89E3;&#x7801;&#x5DE5;&#x4F5C;&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x76F4;&#x63A5;&#x4E22;&#x5F03;&#x3002;&#x68C0;&#x6D4B;&#x5230;&#x4E00;&#x6BB5;&#x8BED;&#x97F3;&#x7684;&#x7ED3;&#x675F;&#x70B9;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x8FD9;&#x6BB5;&#x8BED;&#x97F3;&#x7684;&#x8BC6;&#x522B;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#xFF1B;
+&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x68C0;&#x6D4B;&#x540E;&#x9762;&#x7684;&#x6570;&#x636E;&#x3002;&#x5728;&#x672C;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x8FD4;&#x56DE;&#x591A;&#x6B21;&#x8BC6;&#x522B;&#x7ED3;&#x679C;&#x3002;&#x672C;&#x6A21;&#x5F0F;&#x9002;&#x7528;&#x4E8E;&#x957F;&#x65F6;&#x95F4;&#x8FDE;&#x7EED;&#x8BED;&#x97F3;&#x7684;&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#xFF0C;
+&#x4F8B;&#x5982;&#xFF1A;&#x4F1A;&#x8BAE;&#x8F6C;&#x5199;&#x7CFB;&#x7EDF;&#x3002;</p>
+</li>
+<li>
+<p><strong>&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#x5355;&#x53E5;&#x6A21;&#x5F0F;</strong></p>
+<p>&#x672C;&#x6A21;&#x5F0F;&#x4E0E;&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#x8FDE;&#x7EED;&#x6A21;&#x5F0F;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x8FD4;&#x56DE;&#x7B2C;&#x4E00;&#x6BB5;&#x8BC6;&#x522B;&#x7ED3;&#x679C;&#x540E;&#xFF0C;&#x4E0D;&#x518D;&#x5904;&#x7406;&#x540E;&#x7EED;&#x7684;&#x97F3;&#x9891;&#xFF0C;&#x4F1A;&#x8BDD;&#x81EA;&#x52A8;&#x7ED3;&#x675F;&#x3002;
+&#x8FD9;&#x4E3B;&#x8981;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x548C;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x8BED;&#x97F3;&#x4EA4;&#x4E92;&#x7684;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x8BF4;&#x5B8C;&#x4E00;&#x53E5;&#x8BDD;&#x540E;&#xFF0C;&#x5F80;&#x5F80;&#x4F1A;&#x7B49;&#x5F85;&#x540E;&#x7EED;&#x7684;&#x4EA4;&#x4E92;&#x64CD;&#x4F5C;&#xFF0C;
+&#x4F8B;&#x5982;&#x8046;&#x542C;&#x6839;&#x636E;&#x8BC6;&#x522B;&#x7ED3;&#x679C;&#x64AD;&#x62A5;&#x7684;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF0C;&#x56E0;&#x800C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7EE7;&#x7EED;&#x8BC6;&#x522B;&#x540E;&#x7EED;&#x7684;&#x97F3;&#x9891;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4E91;&#x7AEF;&#x63A5;&#x53E3;&#x6709; <em>Http</em> &#x548C; <em>WebSocket</em> &#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF0C;&#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x5206;&#x522B;&#x662F;
+<a href="api/com/sinovoice/sdk/asr/FreetalkShortAudio.html"><em>FreetalkShortAudio</em></a> &#x548C;
+<a href="api/com/sinovoice/sdk/asr/FreetalkStream.html"><em>FreetalkStream</em></a>&#x3002;</p>
+<p><em>FreetalkShortAudio</em> &#x652F;&#x6301;&#x4E00;&#x53E5;&#x8BDD;&#x8BC6;&#x522B;&#xFF0C;<em>FreetalkStream</em> &#x652F;&#x6301;&#x6D41;&#x5F0F;&#x4E00;&#x53E5;&#x8BDD;&#xFF0C;&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#x8FDE;&#x7EED;&#x6A21;&#x5F0F;&#x548C;&#x5B9E;&#x65F6;&#x8F6C;&#x5199;&#x5355;&#x53E5;&#x6A21;&#x5F0F;&#x3002;</p>
+<h3 class="mume-header undefined" id="H-4-2">4.2 <em>TTS</em> &#x6A21;&#x5757;</h3>
+
+<p>&#x652F;&#x6301;&#x4E24;&#x79CD;&#x8BED;&#x97F3;&#x5408;&#x6210;&#x3002;</p>
+<ul>
+<li>
+<p><a href="api/com/sinovoice/sdk/tts/SynthShortText.html"><em>&#x77ED;&#x6587;&#x672C;&#x8BED;&#x97F3;&#x5408;&#x6210;</em></a></p>
+<p>&#x8F93;&#x5165;&#x4E00;&#x6BB5;&#x6587;&#x672C;&#xFF0C;&#x8BED;&#x97F3;&#x5408;&#x6210;&#x5B8C;&#x6210;&#x540E;&#x4E00;&#x6B21;&#x6027;&#x8FD4;&#x56DE;&#x5408;&#x6210;&#x7684;&#x97F3;&#x9891;&#x3002;&#x4E91;&#x7AEF;&#x80FD;&#x529B;&#x901A;&#x8FC7; HTTP &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x3002;&#x9002;&#x5408;&#x65E0;&#x660E;&#x786E;&#x64AD;&#x653E;&#x5EF6;&#x8FDF;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x3002;</p>
+</li>
+<li>
+<p><a href="api/com/sinovoice/sdk/tts/SynthStream.html"><em>&#x6D41;&#x5F0F;&#x8BED;&#x97F3;&#x5408;&#x6210;</em></a></p>
+<p>&#x8F93;&#x5165;&#x4E00;&#x6BB5;&#x6587;&#x672C;&#xFF0C;&#x5C06;&#x5408;&#x6210;&#x7684;&#x97F3;&#x9891;&#x5206;&#x7247;&#x6301;&#x7EED;&#x8FD4;&#x56DE;&#xFF0C;&#x4E91;&#x7AEF;&#x80FD;&#x529B;&#x901A;&#x8FC7; WebSocket &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x3002;&#x9002;&#x5408;&#x5BF9;&#x64AD;&#x653E;&#x5EF6;&#x8FDF;&#x6709;&#x8F83;&#x9AD8;&#x8981;&#x6C42;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x3002;</p>
+</li>
+</ul>
+<h2 class="mume-header undefined" id="H-5">5. &#x4F7F;&#x7528;&#x65B9;&#x6CD5;</h2>
+
+<h3 class="mume-header undefined" id="H-5-1">5.1 &#x5178;&#x578B;&#x6D41;&#x7A0B;</h3>
+
+<p>&#x4F7F;&#x7528; <em>SDK</em> &#x7684;&#x5178;&#x578B;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p class="line-numbers center"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" contentscripttype="application/ecmascript" contentstyletype="text/css" height="558px" preserveAspectRatio="none" style="width:422px;height:558px;" version="1.1" viewBox="0 0 422 558" width="422px" zoomAndPan="magnify"><defs><filter height="300%" id="f19nl9mpig6nyt" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="211" cy="20" fill="#000000" filter="url(#f19nl9mpig6nyt)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"/><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="90" x="166" y="50"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="70" x="176" y="71.1387">&#x521B;&#x5EFA; HciSdk</text><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="102" x="160" y="103.9688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="82" x="170" y="125.1074">HciSdk &#x521D;&#x59CB;&#x5316;</text><rect fill="#000000" filter="url(#f19nl9mpig6nyt)" height="6" rx="2.5" ry="2.5" style="stroke: #000000; stroke-width: 1.0;" width="401" x="10" y="157.9375"/><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="28" y="183.9375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="38" y="205.0762">&#x521B;&#x5EFA;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;</text><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="28" y="288.8906"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="38" y="310.0293">&#x4F7F;&#x7528;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;</text><polygon fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" points="74,237.9063,86,249.9063,74,261.9063,62,249.9063,74,237.9063" style="stroke: #A80036; stroke-width: 1.5;"/><polygon fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" points="74,349.8438,74,349.8438,86,361.8438,74,373.8438,74,373.8438,62,361.8438,74,349.8438" style="stroke: #A80036; stroke-width: 1.5;"/><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="22" y="393.8438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="84" x="32" y="414.9824">&#x5173;&#x95ED;&#x4F1A;&#x8BDD;&#x5E76;&#x91CA;&#x653E;</text><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="47.9375" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="165" y="281.9063"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="175" y="303.0449">&#x53EF;&#x4EE5;&#x5E76;&#x884C;&#x4F7F;&#x7528;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="175" y="317.0137">&#x591A;&#x4E2A;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;</text><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="291" y="183.9375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="301" y="205.0762">&#x521B;&#x5EFA;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;</text><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="291" y="288.8906"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="72" x="301" y="310.0293">&#x4F7F;&#x7528;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;</text><polygon fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" points="337,237.9063,349,249.9063,337,261.9063,325,249.9063,337,237.9063" style="stroke: #A80036; stroke-width: 1.5;"/><polygon fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" points="337,349.8438,337,349.8438,349,361.8438,337,373.8438,337,373.8438,325,361.8438,337,349.8438" style="stroke: #A80036; stroke-width: 1.5;"/><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="104" x="285" y="393.8438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="84" x="295" y="414.9824">&#x5173;&#x95ED;&#x4F1A;&#x8BDD;&#x5E76;&#x91CA;&#x653E;</text><rect fill="#000000" filter="url(#f19nl9mpig6nyt)" height="6" rx="2.5" ry="2.5" style="stroke: #000000; stroke-width: 1.0;" width="401" x="10" y="447.8125"/><rect fill="#FEFECE" filter="url(#f19nl9mpig6nyt)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="130" x="146" y="473.8125"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="110" x="156" y="494.9512">&#x5173;&#x95ED; HciSdk &#x5E76;&#x91CA;&#x653E;</text><ellipse cx="211" cy="537.7813" fill="#FFFFFF" filter="url(#f19nl9mpig6nyt)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 2.5;" x1="204.8128" x2="217.1872" y1="531.5941" y2="543.9684"/><line style="stroke: #000000; stroke-width: 2.5;" x1="217.1872" x2="204.8128" y1="531.5941" y2="543.9684"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="30" y2="50"/><polygon fill="#A80036" points="207,40,211,50,215,40,211,44" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="83.9688" y2="103.9688"/><polygon fill="#A80036" points="207,93.9688,211,103.9688,215,93.9688,211,97.9688" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="261.9063" y2="288.8906"/><polygon fill="#A80036" points="70,278.8906,74,288.8906,78,278.8906,74,282.8906" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="86" x2="132" y1="361.8438" y2="361.8438"/><polygon fill="#A80036" points="128,315.875,132,305.875,136,315.875,132,311.875" style="stroke: #A80036; stroke-width: 1.5;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="132" x2="132" y1="249.9063" y2="361.8438"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="132" x2="86" y1="249.9063" y2="249.9063"/><polygon fill="#A80036" points="96,245.9063,86,249.9063,96,253.9063,92,249.9063" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="322.8594" y2="349.8438"/><polygon fill="#A80036" points="70,339.8438,74,349.8438,78,339.8438,74,343.8438" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="217.9063" y2="237.9063"/><polygon fill="#A80036" points="70,227.9063,74,237.9063,78,227.9063,74,231.9063" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="373.8438" y2="393.8438"/><polygon fill="#A80036" points="70,383.8438,74,393.8438,78,383.8438,74,387.8438" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="261.9063" y2="288.8906"/><polygon fill="#A80036" points="333,278.8906,337,288.8906,341,278.8906,337,282.8906" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="349" x2="395" y1="361.8438" y2="361.8438"/><polygon fill="#A80036" points="391,315.875,395,305.875,399,315.875,395,311.875" style="stroke: #A80036; stroke-width: 1.5;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="395" x2="395" y1="249.9063" y2="361.8438"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="395" x2="349" y1="249.9063" y2="249.9063"/><polygon fill="#A80036" points="359,245.9063,349,249.9063,359,253.9063,355,249.9063" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="322.8594" y2="349.8438"/><polygon fill="#A80036" points="333,339.8438,337,349.8438,341,339.8438,337,343.8438" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="217.9063" y2="237.9063"/><polygon fill="#A80036" points="333,227.9063,337,237.9063,341,227.9063,337,231.9063" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="373.8438" y2="393.8438"/><polygon fill="#A80036" points="333,383.8438,337,393.8438,341,383.8438,337,387.8438" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="163.9375" y2="183.9375"/><polygon fill="#A80036" points="70,173.9375,74,183.9375,78,173.9375,74,177.9375" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="163.9375" y2="281.9063"/><polygon fill="#A80036" points="207,271.9063,211,281.9063,215,271.9063,211,275.9063" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="163.9375" y2="183.9375"/><polygon fill="#A80036" points="333,173.9375,337,183.9375,341,173.9375,337,177.9375" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="74" x2="74" y1="427.8125" y2="447.8125"/><polygon fill="#A80036" points="70,437.8125,74,447.8125,78,437.8125,74,441.8125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="329.8438" y2="447.8125"/><polygon fill="#A80036" points="207,437.8125,211,447.8125,215,437.8125,211,441.8125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337" x2="337" y1="427.8125" y2="447.8125"/><polygon fill="#A80036" points="333,437.8125,337,447.8125,341,437.8125,337,441.8125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="137.9375" y2="157.9375"/><polygon fill="#A80036" points="207,147.9375,211,157.9375,215,147.9375,211,151.9375" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="453.8125" y2="473.8125"/><polygon fill="#A80036" points="207,463.8125,211,473.8125,215,463.8125,211,467.8125" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="211" x2="211" y1="507.7813" y2="527.7813"/><polygon fill="#A80036" points="207,517.7813,211,527.7813,215,517.7813,211,521.7813" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[511e326d39a7d39ca66f2ea1e5d37468]
+@startuml
+start
+:创建 HciSdk;
+:HciSdk 初始化;
+
+fork
+:创建能力会话;
+repeat
+:使用能力会话;
+repeat while
+:关闭会话并释放;
+
+fork again
+:可以并行使用\n多个能力会话;
+
+fork again
+:创建能力会话;
+repeat
+:使用能力会话;
+repeat while
+:关闭会话并释放;
+endfork
+
+:关闭 HciSdk 并释放;
+end
+@enduml
+
+PlantUML version 1.2020.11(Sat May 30 18:13:43 CST 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p><h3 class="mume-header undefined" id="H-5-2">5.2 &#x7CFB;&#x7EDF;&#x6A21;&#x5757;</h3>
+
+<p>&#x672C;&#x7AE0;&#x8282;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x4ECB;&#x7ECD;&#x7CFB;&#x7EDF;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</p>
+<h4 class="mume-header undefined" id="H-5-2-1">5.2.1 &#x521D;&#x59CB;&#x5316;</h4>
+
+<p>&#x7528;&#x6237;&#x5E94;&#x8BBE;&#x7F6E;&#x6B63;&#x786E;&#x7684; <em>appkey</em>, <em>secret</em>, <em>sys_url</em> &#x548C; <em>cap_url</em> &#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;&#x5982;&#x679C;&#x4EC5;&#x4F7F;&#x7528;&#x672C;&#x5730;&#x80FD;&#x529B;&#xFF0C;
+&#x53EF;&#x4EE5;&#x4E0D;&#x8BBE;&#x7F6E; <em>sys_url</em> &#x548C; <em>cap_url</em>&#x3002;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers"><span class="token class-name">HciSdk</span> sdk <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HciSdk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">HciSdkConfig</span> cfg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HciSdkConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+cfg<span class="token punctuation">.</span><span class="token function">setAppkey</span><span class="token punctuation">(</span><span class="token string">&quot;aicp_app&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x5E73;&#x53F0;&#x4E3A;&#x5E94;&#x7528;&#x5206;&#x914D;&#x7684; appkey</span>
+cfg<span class="token punctuation">.</span><span class="token function">setSecret</span><span class="token punctuation">(</span><span class="token string">&quot;QWxhZGRpbjpvcGVuIHNlc2FtZQ&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x5E94;&#x7528;&#x5BF9;&#x8C61;&#x7684;&#x5BC6;&#x94A5; (&#x654F;&#x611F;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x52FF;&#x516C;&#x5F00;)</span>
+cfg<span class="token punctuation">.</span><span class="token function">setSysUrl</span><span class="token punctuation">(</span><span class="token string">&quot;https://10.1.18.101:22801/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cfg<span class="token punctuation">.</span><span class="token function">setCapUrl</span><span class="token punctuation">(</span><span class="token string">&quot;http://10.1.18.101:22800/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cfg<span class="token punctuation">.</span><span class="token function">setDataPath</span><span class="token punctuation">(</span>data_path<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x6570;&#x636E;&#x5B58;&#x50A8;&#x76EE;&#x5F55;</span>
+cfg<span class="token punctuation">.</span><span class="token function">setVerifySSL</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Log</span><span class="token punctuation">.</span><span class="token function">d</span><span class="token punctuation">(</span><span class="token string">&quot;sdk-config&quot;</span><span class="token punctuation">,</span> cfg<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x8F93;&#x51FA;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x81F3; LogCat</span>
+
+sdk<span class="token punctuation">.</span><span class="token function">setLogLevel</span><span class="token punctuation">(</span><span class="token class-name">LogLevel</span><span class="token punctuation">.</span><span class="token class-name">D</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x8C03;&#x8BD5;&#x9636;&#x6BB5;&#xFF0C;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#x8BBE;&#x4E3A; D&#x3002;&#x9ED8;&#x8BA4;&#x4E3A; I</span>
+
+sdk<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>cfg<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x521D;&#x59CB;&#x5316; HciSdk</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x5728; <em>Android</em> &#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x8C03;&#x7528; <a href="api/com/sinovoice/sdk/HciSdk.html#init-com.sinovoice.sdk.HciSdkConfig-java.lang.Object-"><em>HciSdk.init</em></a>
+&#x4F20;&#x5165;&#x7684; <em>context</em> &#x5E94;&#x4E3A;&#x5E94;&#x7528;&#x7684; <em>Activity</em>&#x3002;&#x6839;&#x636E;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x7528;&#x6237;&#x5E94;&#x5728; <em>Android</em>
+&#x5E94;&#x7528;&#x4E2D;&#x542F;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x4F7F;&#x7528;&#x6743;&#x9650;(<em>uses-permission</em>)&#x3002;</p>
+<ul>
+<li>&#x8BBE;&#x7F6E; <em>data_path</em> &#x5B57;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x542F;&#x7528; <em>android.permission.WRITE_EXTERNAL_STORAGE</em> &#x6743;&#x9650;</li>
+<li>&#x8BBE;&#x7F6E; <em>sys_url</em> &#x5B57;&#x6BB5;&#xFF0C;&#x9700;&#x8981;&#x542F;&#x7528; <em>android.permission.ACCESS_NETWORK_STATE</em> &#x548C;
+<em>android.permission.INTERNET</em> &#x6743;&#x9650;</li>
+</ul>
+<p>&#x7075;&#x4E91; <em>SDK</em> &#x521D;&#x59CB;&#x5316;&#x65F6;&#x82E5;&#x68C0;&#x67E5;&#x5230;&#x6CA1;&#x6709;&#x6240;&#x9700;&#x7684;&#x4F7F;&#x7528;&#x6743;&#x9650;&#xFF0C;&#x5C06;&#x4F1A;&#x8F93;&#x51FA;&#x9519;&#x8BEF;&#x65E5;&#x5FD7;&#x5E76;&#x4EE4;&#x5E94;&#x7528;&#x95EA;&#x9000;&#x3002;&#x5F53;&#x5E94;&#x7528;&#x53D1;&#x751F;&#x95EA;&#x9000;&#x65F6;&#xFF0C;
+&#x8BF7;&#x4ED4;&#x7EC6;&#x68C0;&#x67E5;&#x65E5;&#x5FD7;&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x5728;&#x5176;&#x4ED6;&#x5E73;&#x53F0;&#x4E0B;&#xFF0C;<em>context</em> &#x53C2;&#x6570;&#x65E0;&#x610F;&#x4E49;&#xFF0C;&#x53EF;&#x4F20;&#x5165; <em>null</em> &#x503C;&#x3002;</p>
+<h5 class="mume-header undefined" id="H-5-2-1-1">5.2.1.1 SSL &#x8BC1;&#x4E66;</h5>
+
+<p>&#x7075;&#x4E91;&#x5E73;&#x53F0;&#x7CFB;&#x7EDF;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x5FC5;&#x987B;&#x4F7F;&#x7528; https &#x8BBF;&#x95EE;(&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#x7684; <code>https://10.1.18.101:22801</code>)&#xFF0C;
+&#x80FD;&#x529B;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; http &#x6216; https (&#x4E0A;&#x9762;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#x7684; <code>http://10.1.18.101:22800</code>)&#x3002;</p>
+<p>&#x51FA;&#x4E8E;&#x5B89;&#x5168;&#x6027;&#x7684;&#x8003;&#x8651;&#xFF0C;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4E0A;&#x8FF0; URL &#x5E94;&#x4F7F;&#x7528;&#x57DF;&#x540D;&#x4EE3;&#x66FF; IP &#x5730;&#x5740;&#xFF0C;&#x80FD;&#x529B;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x4E5F;&#x5E94;&#x4F7F;&#x7528; https
+&#x8FDE;&#x63A5;&#xFF0C;&#x4EE5;&#x4FDD;&#x62A4;&#x4F1A;&#x8BDD;&#x4EE4;&#x724C;&#x53CA;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;&#x3002;&#x901A;&#x8FC7; <code>cfg.setVerifySSL(false)</code>&#xFF0C;<em>SDK</em>
+&#x5C06;&#x4E0D;&#x9A8C;&#x8BC1;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x8BC1;&#x4E66;&#x7684;&#x6709;&#x6548;&#x6027;&#xFF0C;&#x4E0D;&#x5E94;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x4F7F;&#x7528;&#x8BE5;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x5982;&#x679C; <em>SSL</em> &#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;&#x662F;&#x901A;&#x8FC7;&#x6743;&#x5A01;&#x8BC1;&#x4E66;&#x673A;&#x6784;&#x7533;&#x8BF7;&#x7684;&#x5408;&#x6CD5;&#x8BC1;&#x4E66;&#xFF0C;<em>SDK</em> &#x4E00;&#x822C;&#x65E0;&#x987B;&#x505A;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;
+&#x56E0;&#x4E3A;&#x5927;&#x90E8;&#x5206;&#x7CFB;&#x7EDF;&#x4E2D;&#x5DF2;&#x9884;&#x7F6E;&#x5B89;&#x88C5;&#x4E86;&#x5E38;&#x89C1;&#x6743;&#x5A01;&#x8BC1;&#x4E66;&#x673A;&#x6784;&#x7684;&#x6839;&#x8BC1;&#x4E66;&#xFF0C;
+<em>SDK</em> &#x53EF;&#x901A;&#x8FC7;&#x6839;&#x8BC1;&#x4E66;&#x9A8C;&#x8BC1;&#x6839;&#x8BC1;&#x4E66;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x9881;&#x53D1;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;&#x662F;&#x4F01;&#x4E1A;&#x81EA;&#x5DF1;&#x5236;&#x4F5C;&#x7684;&#x81EA;&#x7B7E;&#x540D;&#x8BC1;&#x4E66;&#x6216;&#x8005;&#x7CFB;&#x7EDF;&#x4E2D;&#x4E0D;&#x5305;&#x542B;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;&#x7684;&#x6839;&#x8BC1;&#x4E66;&#xFF0C;
+&#x5219;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>setCaBundle</code> &#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x53D7;&#x4FE1;&#x4EFB;&#x7684;&#x8BC1;&#x4E66;&#x94FE;&#x3002;</p>
+<p>&#x4EE5; <code>https://baidu.com</code> &#x4E3A;&#x4F8B;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;&#x4E0B;&#x8FF0;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x8BC1;&#x4E66;&#x94FE;&#x3002;</p>
+<ol>
+<li>&#x5728; <code>Chrome</code> &#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x6253;&#x5F00; <code>https://baidu.com</code> &#x9996;&#x9875;&#xFF0C;&#x70B9;&#x51FB;&#x5730;&#x5740;&#x680F;&#x5DE6;&#x4FA7;&#x7684;&#x9501;&#x5F62;&#x56FE;&#x6807;&#x5E76;&#x67E5;&#x770B;&#x8BC1;&#x4E66;</li>
+<li>&#x5728;&#x8BC1;&#x4E66;&#x8DEF;&#x5F84;&#x6807;&#x7B7E;&#x9875;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;<pre data-role="codeBlock" data-info="tree" class="language-tree"><code>GlobalSign Root CA - R1
+&#x2514;&#x2500;&#x2500; GlobalSign Organization Validation CA - SHA256 - G2
+    &#x2514;&#x2500;&#x2500;baidu.com
+</code></pre></li>
+<li>&#x9009;&#x62E9; <code>GlobalSign Root CA - R1</code> &#x8282;&#x70B9;&#xFF0C;&#x70B9;&#x51FB; <code>&#x67E5;&#x770B;&#x8BC1;&#x4E66;</code> &#x6309;&#x94AE;
+<ul>
+<li>&#x5728;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x6807;&#x7B7E;&#x9875;&#xFF0C;&#x70B9;&#x51FB;&#x590D;&#x5236;&#x5230;&#x6587;&#x4EF6;</li>
+<li>&#x5728;&#x8BC1;&#x4E66;&#x5BFC;&#x51FA;&#x5411;&#x5BFC;&#x4E2D;&#x9009;&#x62E9;&#x4FDD;&#x5B58;&#x4E3A; <code>Base64 &#x7F16;&#x7801; X.509 (.CER)</code> &#x683C;&#x5F0F;&#x7684;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;</li>
+</ul>
+</li>
+<li>&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x5BFC;&#x51FA; <code>GlobalSign Organization Validation CA - SHA256 - G2</code> &#x8BC1;&#x4E66;</li>
+<li>&#x5C06;&#x4E24;&#x4E2A;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x6309;&#x8BC1;&#x4E66;&#x8DEF;&#x5F84;&#x4E2D;&#x7684;&#x5148;&#x540E;&#x987A;&#x5E8F;&#x6392;&#x5217;&#xFF0C;&#x5F97;&#x5230;&#x8BC1;&#x4E66;&#x94FE;&#x6587;&#x4EF6; <code>ca.pem</code> &#x5982;&#x4E0B;<pre data-role="codeBlock" data-info="pem {.line-numbers}" class="language-pem line-numbers"><code>-----BEGIN CERTIFICATE-----
+MIIDdTCCAl2gAwIBAgILBAAAAAABFUtaw5QwDQYJKoZIhvcNAQEFBQAwVzELMAkG
+A1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNVBAsTB1Jv
+b3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw05ODA5MDExMjAw
+MDBaFw0yODAxMjgxMjAwMDBaMFcxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9i
+YWxTaWduIG52LXNhMRAwDgYDVQQLEwdSb290IENBMRswGQYDVQQDExJHbG9iYWxT
+aWduIFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaDuaZ
+jc6j40+Kfvvxi4Mla+pIH/EqsLmVEQS98GPR4mdmzxzdzxtIK+6NiY6arymAZavp
+xy0Sy6scTHAHoT0KMM0VjU/43dSMUBUc71DuxC73/OlS8pF94G3VNTCOXkNz8kHp
+1Wrjsok6Vjk4bwY8iGlbKk3Fp1S4bInMm/k8yuX9ifUSPJJ4ltbcdG6TRGHRjcdG
+snUOhugZitVtbNV4FpWi6cgKOOvyJBNPc1STE4U6G7weNLWLBYy5d4ux2x8gkasJ
+U26Qzns3dLlwR5EiUWMWea6xrkEmCMgZK9FGqkjWZCrXgzT/LCrBbBlDSgeF59N8
+9iFo7+ryUp9/k5DPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8E
+BTADAQH/MB0GA1UdDgQWBBRge2YaRQ2XyolQL30EzTSo//z9SzANBgkqhkiG9w0B
+AQUFAAOCAQEA1nPnfE920I2/7LqivjTFKDK1fPxsnCwrvQmeU79rXqoRSLblCKOz
+yj1hTdNGCbM+w6DjY1Ub8rrvrTnhQ7k4o+YviiY776BQVvnGCv04zcQLcFGUl5gE
+38NflNUVyRRBnMRddWQVDf9VMOyGj/8N7yy5Y0b2qvzfvGn9LhJIZJrglfCm7ymP
+AbEVtQwdpf5pLGkkeB6zpxxxYu7KyJesF12KwvhHhm4qxFYxldBniYUr+WymXUad
+DKqC5JlR3XC321Y9YeRq4VzW9v493kHMB65jUr9TU/Qr6cf9tveCX4XSQRjbgbME
+HMUfpIBvFSDJ3gyICh3WZlXi/EjJKSZp4A==
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIEaTCCA1GgAwIBAgILBAAAAAABRE7wQkcwDQYJKoZIhvcNAQELBQAwVzELMAkG
+A1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNVBAsTB1Jv
+b3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xNDAyMjAxMDAw
+MDBaFw0yNDAyMjAxMDAwMDBaMGYxCzAJBgNVBAYTAkJFMRkwFwYDVQQKExBHbG9i
+YWxTaWduIG52LXNhMTwwOgYDVQQDEzNHbG9iYWxTaWduIE9yZ2FuaXphdGlvbiBW
+YWxpZGF0aW9uIENBIC0gU0hBMjU2IC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+DwAwggEKAoIBAQDHDmw/I5N/zHClnSDDDlM/fsBOwphJykfVI+8DNIV0yKMCLkZc
+C33JiJ1Pi/D4nGyMVTXbv/Kz6vvjVudKRtkTIso21ZvBqOOWQ5PyDLzm+ebomchj
+SHh/VzZpGhkdWtHUfcKc1H/hgBKueuqI6lfYygoKOhJJomIZeg0k9zfrtHOSewUj
+mxK1zusp36QUArkBpdSmnENkiN74fv7j9R7l/tyjqORmMdlMJekYuYlZCa7pnRxt
+Nw9KHjUgKOKv1CGLAcRFrW4rY6uSa2EKTSDtc7p8zv4WtdufgPDWi2zZCHlKT3hl
+2pK8vjX5s8T5J4BO/5ZS5gIg4Qdz6V0rvbLxAgMBAAGjggElMIIBITAOBgNVHQ8B
+Af8EBAMCAQYwEgYDVR0TAQH/BAgwBgEB/wIBADAdBgNVHQ4EFgQUlt5h8b0cFilT
+HMDMfTuDAEDmGnwwRwYDVR0gBEAwPjA8BgRVHSAAMDQwMgYIKwYBBQUHAgEWJmh0
+dHBzOi8vd3d3Lmdsb2JhbHNpZ24uY29tL3JlcG9zaXRvcnkvMDMGA1UdHwQsMCow
+KKAmoCSGImh0dHA6Ly9jcmwuZ2xvYmFsc2lnbi5uZXQvcm9vdC5jcmwwPQYIKwYB
+BQUHAQEEMTAvMC0GCCsGAQUFBzABhiFodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNv
+bS9yb290cjEwHwYDVR0jBBgwFoAUYHtmGkUNl8qJUC99BM00qP/8/UswDQYJKoZI
+hvcNAQELBQADggEBAEYq7l69rgFgNzERhnF0tkZJyBAW/i9iIxerH4f4gu3K3w4s
+32R1juUYcqeMOovJrKV3UPfvnqTgoI8UV6MqX+x+bRDmuo2wCId2Dkyy2VG7EQLy
+XN0cvfNVlg/UBsD84iOKJHDTu/B5GqdhcIOKrwbFINihY9Bsrk8y1658GEV1BSl3
+30JAZGSGvip2CTFvHST0mdCF/vIhCPnG9vHQWe3WVjwIKANnuvD58ZAWR65n5ryA
+SOlCdjSXVWkkDoPWoC209fN5ikkodBpBocLTJIg1MGCUF7ThBCIxPTsvFwayuJ2G
+K1pp74P1S8SqtCr4fKGxhZSM9AyHDPSsQPhZSZg=
+-----END CERTIFICATE-----
+</code><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></li>
+<li>&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x6DFB;&#x52A0; <code>cfg.set_ca_bundle(&quot;/path/of/ca.pem&quot;)</code>&#xFF0C;&#x8FD9;&#x6837;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;
+<em>SDK</em> &#x5C06;&#x4F1A;&#x53EA;&#x4FE1;&#x4EFB;&#x7531; <code>ca.pem</code> &#x8BC1;&#x4E66;&#x94FE;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x8BC1;&#x4E66;&#x673A;&#x6784;&#x9881;&#x53D1;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8BC1;&#x4E66;</li>
+</ol>
+<h4 class="mume-header undefined" id="H-5-2-2">5.2.2 &#x53CD;&#x521D;&#x59CB;&#x5316;</h4>
+
+<p>&#x8C03;&#x7528; <em><code>HciSdk.close()</code></em> &#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x53CD;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x540C;&#x6B65;&#x65B9;&#x5F0F;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers">sdk<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+sdk<span class="token punctuation">.</span><span class="token function">waitForClosed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x7B49;&#x5F85; HciSdk &#x5B8C;&#x6210;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0D;&#x80FD;&#x5728;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// &#x8D44;&#x6E90;&#x91CA;&#x653E;&#x7B49;&#x6E05;&#x573A;&#x64CD;&#x4F5C;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p>&#x5F02;&#x6B65;&#x65B9;&#x5F0F;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers">sdk<span class="token punctuation">.</span><span class="token function">waitForClosed</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">IVoidCB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// &#x8D44;&#x6E90;&#x91CA;&#x653E;&#x7B49;&#x6E05;&#x573A;&#x64CD;&#x4F5C;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+sdk<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#xFF0C;<em>HciSdk.waitForClosed</em> &#x8C03;&#x7528;&#x53EF;&#x4EE5;&#x53D1;&#x751F;&#x5728; <em>HciSdk.close</em> &#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;
+&#x53EF;&#x4EE5;&#x5C06;&#x6E05;&#x573A;&#x4EE3;&#x7801;&#x653E;&#x5728;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#xFF0C;&#x4FBF;&#x4E8E;&#x7EF4;&#x62A4;&#x65F6;&#x540C;&#x65F6;&#x4FEE;&#x6539;&#x8D44;&#x6E90;&#x5206;&#x914D;&#x53CA;&#x91CA;&#x653E;&#x7684;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x3002;</p>
+<p><em>HciSdk</em> &#x5BF9;&#x8C61;&#x5728;&#x5B8C;&#x6210;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528; <em>HciSdk.dispose()</em> &#x91CA;&#x653E;&#x5E95;&#x5C42;&#x8D44;&#x6E90;&#x3002;</p>
+<h4 class="mume-header undefined" id="H-5-2-3">5.2.3 &#x521B;&#x5EFA;&#x4F1A;&#x8BDD;</h4>
+
+<p>&#x4E00;&#x822C;&#x4F7F;&#x7528; <em>new</em> &#x76F4;&#x63A5;&#x521B;&#x5EFA;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x65F6;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E0D;&#x540C;&#x7684;&#x8BBE;&#x7F6E;&#x3002;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers"><span class="token class-name">FreetalkStream</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FreetalkStream</span><span class="token punctuation">(</span>sdk<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">CloudAsrConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></pre><h4 class="mume-header undefined" id="H-5-2-4">5.2.4 &#x5173;&#x95ED;&#x4F1A;&#x8BDD;</h4>
+
+<p>&#x8C03;&#x7528; <em><code>HciSession.close()</code></em> &#x65B9;&#x6CD5;&#x5173;&#x95ED;&#x4F1A;&#x8BDD;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x540C;&#x6B65;&#x65B9;&#x5F0F;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers">s<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+s<span class="token punctuation">.</span><span class="token function">waitForClosed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// &#x7B49;&#x5F85;&#x4F1A;&#x8BDD;&#x5B8C;&#x6210;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0D;&#x80FD;&#x5728;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7EBF;&#x7A0B;&#x8C03;&#x7528;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// &#x4F1A;&#x8BDD;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x7B49;&#x6E05;&#x573A;&#x64CD;&#x4F5C;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></pre><p>&#x5F02;&#x6B65;&#x65B9;&#x5F0F;</p>
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers">s<span class="token punctuation">.</span><span class="token function">waitForClosed</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">IVoidCB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// &#x4F1A;&#x8BDD;&#x76F8;&#x5173;&#x7684;&#x8D44;&#x6E90;&#x91CA;&#x653E;&#x7B49;&#x6E05;&#x573A;&#x64CD;&#x4F5C;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+s<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#xFF0C;<em>HciSession.waitForClosed</em> &#x8C03;&#x7528;&#x53EF;&#x4EE5;&#x53D1;&#x751F;&#x5728; <em>HciSession.close</em> &#x8C03;&#x7528;&#x4E4B;&#x524D;&#xFF0C;
+&#x53EF;&#x4EE5;&#x5C06;&#x6E05;&#x573A;&#x4EE3;&#x7801;&#x653E;&#x5728;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#xFF0C;&#x4FBF;&#x4E8E;&#x7EF4;&#x62A4;&#x65F6;&#x540C;&#x65F6;&#x4FEE;&#x6539;&#x8D44;&#x6E90;&#x5206;&#x914D;&#x53CA;&#x91CA;&#x653E;&#x7684;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F1A;&#x8BDD;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0E; <em>HciSdk</em> &#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x76F8;&#x540C;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4E0D;&#x53D1;&#x8D77;&#x4F1A;&#x8BDD;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#xFF0C;&#x5173;&#x95ED; <em>HciSdk</em>
+&#x5BF9;&#x8C61;&#x4F1A;&#x95F4;&#x63A5;&#x5173;&#x95ED;&#x6240;&#x6709;&#x6253;&#x5F00;&#x7684;&#x80FD;&#x529B;&#x4F1A;&#x8BDD;&#x3002;&#x7528;&#x6237;&#x53EF;&#x5728; <em>HciSdk</em> &#x7684;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x56DE;&#x8C03;&#x4E2D;&#x8FDB;&#x884C;&#x4F1A;&#x8BDD;&#x76F8;&#x5173;&#x7684;&#x6E05;&#x573A;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F1A;&#x8BDD;&#x751F;&#x547D;&#x5468;&#x671F;&#x6BD4; <em>HciSdk</em> &#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x77ED;&#xFF0C;&#x5EFA;&#x8BAE;&#x4E0D;&#x518D;&#x4F7F;&#x7528;&#x4F1A;&#x8BDD;&#x540E;&#xFF0C;&#x5C3D;&#x65E9;&#x5173;&#x95ED;&#x4F1A;&#x8BDD;&#xFF0C;
+&#x4EE5;&#x51CF;&#x5C11;&#x5185;&#x5B58;&#x53CA;&#x8D44;&#x6E90;&#x5360;&#x7528;(&#x6388;&#x6743;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x9650;&#x5236;&#x4F1A;&#x8BDD;&#x6570;&#x91CF;)&#x3002;</p>
+<p><em>HciSession</em> &#x5BF9;&#x8C61;&#x5728;&#x5B8C;&#x6210;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528; <em>HciSession.dispose()</em> &#x91CA;&#x653E;&#x5E95;&#x5C42;&#x8D44;&#x6E90;&#x3002;</p>
+<h4 class="mume-header undefined" id="H-5-2-5">5.2.5 &#x5B9A;&#x65F6;&#x5668;</h4>
+
+<pre data-role="codeBlock" data-info="java {.line-numbers}" class="language-java line-numbers"><span class="token comment">// &#x521B;&#x5EFA;&#x5B9A;&#x65F6;&#x5668;</span>
+<span class="token class-name">HciTimer</span> timer <span class="token operator">=</span> sdk<span class="token punctuation">.</span><span class="token function">newTimer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ITimerCB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment">// &#x5B9A;&#x65F6;&#x5668;&#x88AB;&#x89E6;&#x53D1;&#x65F6;&#x6267;&#x884C;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x542F;&#x52A8;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;1.2 &#x79D2;&#x540E;&#x89E6;&#x53D1;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x4EC5;&#x89E6;&#x53D1;&#x4E00;&#x6B21;</span>
+timer<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token number">1200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x518D;&#x6B21;&#x8C03;&#x7528;&#xFF0C;&#x5C06;&#x53D6;&#x6D88;&#x4E4B;&#x524D;&#x7684;&#x5B9A;&#x65F6;&#x8BBE;&#x5B9A;&#x3002;</span>
+<span class="token comment">// 200ms &#x540E;&#x9996;&#x6B21;&#x89E6;&#x53D1;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x95F4;&#x9694;&#x4E3A; 1 &#x79D2;&#x7684;&#x5468;&#x671F;&#x6027;&#x89E6;&#x53D1;&#xFF0C;&#x76F4;&#x5230;&#x88AB;&#x505C;&#x6B62;&#x6216;&#x5173;&#x95ED;</span>
+timer<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x505C;&#x6B62;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x4ECD;&#x53EF;&#x901A;&#x8FC7;&#x8C03;&#x7528; start &#x542F;&#x52A8;&#x5B9A;&#x65F6;&#x5668;</span>
+timer<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x5173;&#x95ED;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x540C;&#x6B65;&#x64CD;&#x4F5C;</span>
+timer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// &#x91CA;&#x653E;&#x5B9A;&#x65F6;&#x5668;&#x8D44;&#x6E90;</span>
+timer<span class="token punctuation">.</span><span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre><p>&#x5173;&#x95ED; <em>HciSdk</em> &#x5BF9;&#x8C61;&#x4F1A;&#x95F4;&#x63A5;&#x5173;&#x95ED;&#x6240;&#x6709;&#x6253;&#x5F00;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x5F53;&#x5B9A;&#x65F6;&#x5668;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E0E; <em>HciSdk</em> &#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x76F8;&#x540C;&#x65F6;&#xFF0C;
+&#x53EF;&#x7701;&#x7565;&#x5B9A;&#x65F6;&#x5668;&#x7684;&#x5173;&#x95ED;&#x64CD;&#x4F5C;&#xFF0C;&#x5F85; <em>HciSdk</em> &#x88AB;&#x5173;&#x95ED;&#x540E;&#x518D;&#x91CA;&#x653E;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<h4 class="mume-header undefined" id="H-5-2-6">5.2.6 &#x5B89;&#x5353;&#x97F3;&#x9891;&#x6A21;&#x5757;</h4>
+
+<p>&#x5B89;&#x5353;&#x5E73;&#x53F0;&#x4E0B;&#x63D0;&#x4F9B;<a href="api/com/sinovoice/sdk/android/AudioRecorder.html">&#x5F55;&#x97F3;&#x673A;</a>&#x548C;<a href="api/com/sinovoice/sdk/android/AudioPlayer.html">&#x64AD;&#x653E;&#x5668;</a>&#x3002;
+&#x4F7F;&#x7528;&#x5F55;&#x97F3;&#x673A;&#x548C;&#x64AD;&#x653E;&#x5668;&#x65F6;&#xFF0C;&#x9879;&#x76EE;&#x4E2D;&#x9700;&#x8981;&#x5305;&#x542B; hci-android.jar, hci.jar, libhci-sys.so, libhci-common.so &#x4E2D;&#x3002;</p>
+<p>&#x5F55;&#x97F3;&#x673A;&#x63D0;&#x4F9B;&#x56DE;&#x58F0;&#x6D88;&#x9664;&#x548C;&#x964D;&#x566A;&#x5904;&#x7406;&#xFF0C;&#x5F53;&#x786C;&#x4EF6;&#x56DE;&#x58F0;&#x6D88;&#x9664;&#x548C;&#x964D;&#x566A;&#x4E0D;&#x53EF;&#x7528;&#x6216;&#x8005;&#x6548;&#x679C;&#x4E0D;&#x597D;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x7981;&#x7528;&#x786C;&#x4EF6;&#x652F;&#x6301;&#xFF0C;&#x4F7F;&#x7528;&#x7075;&#x4E91; SDK
+&#x63D0;&#x4F9B;&#x7684;&#x56DE;&#x58F0;&#x6D88;&#x9664;&#x548C;&#x964D;&#x566A;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x8FD0;&#x884C; audio_demo &#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x4E86;&#x89E3;&#x66F4;&#x591A;&#x3002;</p>
+<p>&#x8FD8;&#x5916;&#x8FD8;&#x6709; asr_demo, tts_demo, asr_tts_demo &#x793A;&#x4F8B;&#x4F9B;&#x53C2;&#x8003;&#x3002;</p>
+<blockquote>
+<p>&#x8BF4;&#x660E;: &#x7075;&#x4E91; SDK &#x4F7F;&#x7528;&#x7684;&#x662F; WebRTC &#x4E2D;&#x7684;&#x56DE;&#x58F0;&#x6D88;&#x9664;&#x7B97;&#x6CD5;&#xFF0C;&#x5BF9;&#x4E8E;&#x53CC;&#x8BB2;&#x573A;&#x666F;&#x6548;&#x679C;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x3002;
+&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x8FD9;&#x7BC7;<a href="https://blog.csdn.net/memath/article/details/78668514">&#x535A;&#x5BA2;</a>&#x4E86;&#x89E3;&#x66F4;&#x591A;</p>
+</blockquote>
+<h3 class="mume-header undefined" id="H-5-3">5.3 <em>ASR</em> &#x6A21;&#x5757;</h3>
+
+<p>&#x8BE6;&#x89C1;&#x5B89;&#x5353;&#x5E73;&#x53F0; SDK &#x5185;&#x7684; asr_demo &#x793A;&#x4F8B;&#x7A0B;&#x5E8F;</p>
+<h3 class="mume-header undefined" id="H-5-4">5.4 <em>TTS</em> &#x6A21;&#x5757;</h3>
+
+<p>&#x8BE6;&#x89C1;&#x5B89;&#x5353;&#x5E73;&#x53F0; SDK &#x5185;&#x7684; tts_demo &#x793A;&#x4F8B;&#x7A0B;&#x5E8F;</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
